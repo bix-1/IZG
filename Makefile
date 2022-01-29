@@ -8,6 +8,7 @@
 unzip:
 	unzip izgProject.zip -d src
 	cp gpu.* src/student
+	cp phong* src/student
 	cd src/build && cmake ..
 	cd src/build && make
 
