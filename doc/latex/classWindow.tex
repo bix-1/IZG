@@ -1,0 +1,244 @@
+\hypertarget{classWindow}{}\section{Window Class Reference}
+\label{classWindow}\index{Window@{Window}}
+
+
+This class represents S\+DL window.  
+
+
+
+
+{\ttfamily \#include $<$window.\+hpp$>$}
+
+Inheritance diagram for Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classWindow}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}\label{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}} 
+using \hyperlink{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}{Event\+Callback} = std\+::function$<$ void(S\+D\+L\+\_\+\+Event const  \&e)$>$
+\begin{DoxyCompactList}\small\item\em Type of event callback function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_ae666e38583ffdec789fdfc85d6504d73}\label{classWindow_ae666e38583ffdec789fdfc85d6504d73}} 
+using \hyperlink{classWindow_ae666e38583ffdec789fdfc85d6504d73}{Idle\+Callback} = std\+::function$<$ void()$>$
+\begin{DoxyCompactList}\small\item\em Type of idle callback function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWindow_ac84f7bfb1b67b73c69a582fe72339192}{Window} (int32\+\_\+t width, int32\+\_\+t height, char const $\ast$name)
+\begin{DoxyCompactList}\small\item\em Constructor of \hyperlink{classWindow}{Window} instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a245d821e6016fa1f6970ccbbedd635f6}\label{classWindow_a245d821e6016fa1f6970ccbbedd635f6}} 
+virtual \hyperlink{classWindow_a245d821e6016fa1f6970ccbbedd635f6}{$\sim$\+Window} ()
+\begin{DoxyCompactList}\small\item\em Destructor of \hyperlink{classWindow}{Window} instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a4e50cfd8622784e15409db62d5e11097}\label{classWindow_a4e50cfd8622784e15409db62d5e11097}} 
+void \hyperlink{classWindow_a4e50cfd8622784e15409db62d5e11097}{main\+Loop} ()
+\begin{DoxyCompactList}\small\item\em This is the main loop of the window. \end{DoxyCompactList}\item 
+void \hyperlink{classWindow_a10bc693cad6ea33409071ed50c3e880c}{set\+Callback} (uint32\+\_\+t event, \hyperlink{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}{Event\+Callback} const \&clb)
+\begin{DoxyCompactList}\small\item\em This function sets callback for event. \end{DoxyCompactList}\item 
+void \hyperlink{classWindow_a4cc4f07c386516c8607bfc7559319112}{set\+Window\+Callback} (uint32\+\_\+t event, \hyperlink{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}{Event\+Callback} const \&clb)
+\begin{DoxyCompactList}\small\item\em This function sets window callback. \end{DoxyCompactList}\item 
+void \hyperlink{classWindow_ac1cd27329e92882a1527eece8aa4bef4}{set\+Idle\+Callback} (\hyperlink{classWindow_ae666e38583ffdec789fdfc85d6504d73}{Idle\+Callback} const \&clb)
+\begin{DoxyCompactList}\small\item\em This function sets idle callback -\/ function that is called when there are not events. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a383e6781d7d6ae31ebbd8a4cc0df88da}\label{classWindow_a383e6781d7d6ae31ebbd8a4cc0df88da}} 
+void \hyperlink{classWindow_a383e6781d7d6ae31ebbd8a4cc0df88da}{re\+Init\+Renderer} ()
+\begin{DoxyCompactList}\small\item\em This function reinits S\+DL renderer. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Window $\ast$ \hyperlink{classWindow_a248f74edd46fe00cb6a2c93bd048c26f}{get\+Window} ()
+\begin{DoxyCompactList}\small\item\em This function returns S\+DL window handle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWindow_a99e0671f31b1e0fae2309dfbe8d54daf}\label{classWindow_a99e0671f31b1e0fae2309dfbe8d54daf}} 
+void \hyperlink{classWindow_a99e0671f31b1e0fae2309dfbe8d54daf}{init\+S\+DL} ()
+\begin{DoxyCompactList}\small\item\em This function initializes S\+DL. \end{DoxyCompactList}\item 
+void \hyperlink{classWindow_a520e7a72c81aa1bf3b8d7e4b59906569}{init\+Window} (int32\+\_\+t width, int32\+\_\+t height, char const $\ast$name)
+\begin{DoxyCompactList}\small\item\em This funciton initialized S\+DL window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a505288fdd1cf4ae5e6f781260e257fce}\label{classWindow_a505288fdd1cf4ae5e6f781260e257fce}} 
+void \hyperlink{classWindow_a505288fdd1cf4ae5e6f781260e257fce}{init\+Surface} ()
+\begin{DoxyCompactList}\small\item\em This function initializes S\+DL surface. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_acc6425810e18a85137aa70a8c5d11f97}\label{classWindow_acc6425810e18a85137aa70a8c5d11f97}} 
+void \hyperlink{classWindow_acc6425810e18a85137aa70a8c5d11f97}{init\+Renderer} ()
+\begin{DoxyCompactList}\small\item\em This function inzializes S\+DL renderer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_af21aa4f51374ee5234701e4b122950d8}\label{classWindow_af21aa4f51374ee5234701e4b122950d8}} 
+void \hyperlink{classWindow_af21aa4f51374ee5234701e4b122950d8}{init\+Events} ()
+\begin{DoxyCompactList}\small\item\em This function initializes S\+DL vents. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a381364c2704bed978cdf9df669c4b629}\label{classWindow_a381364c2704bed978cdf9df669c4b629}} 
+void \hyperlink{classWindow_a381364c2704bed978cdf9df669c4b629}{process\+Events} ()
+\begin{DoxyCompactList}\small\item\em This function processes all S\+DL eents. \end{DoxyCompactList}\item 
+void \hyperlink{classWindow_a31e1886b2016544baa55bedcc4f3b48b}{process\+Event} (S\+D\+L\+\_\+\+Event const \&event)
+\begin{DoxyCompactList}\small\item\em This funciton processes one S\+DL event. \end{DoxyCompactList}\item 
+void \hyperlink{classWindow_a65c68d5dc2ebc68108662978e86efd25}{process\+Window\+Event} (S\+D\+L\+\_\+\+Event const \&event)
+\begin{DoxyCompactList}\small\item\em This function processes one S\+DL window event. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a4a94fbab09672f8360e855ac9ba3becb}\label{classWindow_a4a94fbab09672f8360e855ac9ba3becb}} 
+void \hyperlink{classWindow_a4a94fbab09672f8360e855ac9ba3becb}{call\+Idle\+Callback} ()
+\begin{DoxyCompactList}\small\item\em This function calls user defined idle callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWindow_ae39a7755a5a6ab74bcbdbe3e2e206820}\label{classWindow_ae39a7755a5a6ab74bcbdbe3e2e206820}} 
+S\+D\+L\+\_\+\+Window $\ast$ \hyperlink{classWindow_ae39a7755a5a6ab74bcbdbe3e2e206820}{window}
+\begin{DoxyCompactList}\small\item\em window handle \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a1a42da4979d383bb3556f62df57952e5}\label{classWindow_a1a42da4979d383bb3556f62df57952e5}} 
+S\+D\+L\+\_\+\+Surface $\ast$ \hyperlink{classWindow_a1a42da4979d383bb3556f62df57952e5}{surface}
+\begin{DoxyCompactList}\small\item\em surface \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a2b52309ef359b6392454a3bb57398b5d}\label{classWindow_a2b52309ef359b6392454a3bb57398b5d}} 
+S\+D\+L\+\_\+\+Renderer $\ast$ \hyperlink{classWindow_a2b52309ef359b6392454a3bb57398b5d}{renderer}
+\begin{DoxyCompactList}\small\item\em S\+D\+L2 renderer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a3a4074a228d183644d5bb379ceb137f6}\label{classWindow_a3a4074a228d183644d5bb379ceb137f6}} 
+bool \hyperlink{classWindow_a3a4074a228d183644d5bb379ceb137f6}{running}
+\begin{DoxyCompactList}\small\item\em is main loop running \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_ae109ff1ae7efd24eb863a87435c230b9}\label{classWindow_ae109ff1ae7efd24eb863a87435c230b9}} 
+std\+::map$<$ Uint32, \hyperlink{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}{Event\+Callback} $>$ \hyperlink{classWindow_ae109ff1ae7efd24eb863a87435c230b9}{event\+Callbacks}
+\begin{DoxyCompactList}\small\item\em map of event callback function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_a559418e04c7331f18d899f0570416631}\label{classWindow_a559418e04c7331f18d899f0570416631}} 
+std\+::map$<$ Uint8,\hyperlink{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}{Event\+Callback} $>$ \hyperlink{classWindow_a559418e04c7331f18d899f0570416631}{window\+Callbacks}
+\begin{DoxyCompactList}\small\item\em map of event callback function for window event \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_aca8fcf0113fd079f5bc4050c1f72a93b}\label{classWindow_aca8fcf0113fd079f5bc4050c1f72a93b}} 
+\hyperlink{classWindow_ae666e38583ffdec789fdfc85d6504d73}{Idle\+Callback} \hyperlink{classWindow_aca8fcf0113fd079f5bc4050c1f72a93b}{idle\+Callback}
+\begin{DoxyCompactList}\small\item\em function that is called in mainloop when there are no events \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents S\+DL window. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWindow_ac84f7bfb1b67b73c69a582fe72339192}\label{classWindow_ac84f7bfb1b67b73c69a582fe72339192}} 
+\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\subsubsection{\texorpdfstring{Window()}{Window()}}
+{\footnotesize\ttfamily Window\+::\+Window (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{width,  }\item[{int32\+\_\+t}]{height,  }\item[{char const $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructor of \hyperlink{classWindow}{Window} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width of the window \\
+\hline
+{\em height} & height of the window \\
+\hline
+{\em name} & name of the window \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classWindow_a248f74edd46fe00cb6a2c93bd048c26f}\label{classWindow_a248f74edd46fe00cb6a2c93bd048c26f}} 
+\index{Window@{Window}!get\+Window@{get\+Window}}
+\index{get\+Window@{get\+Window}!Window@{Window}}
+\subsubsection{\texorpdfstring{get\+Window()}{getWindow()}}
+{\footnotesize\ttfamily S\+D\+L\+\_\+\+Window $\ast$ Window\+::get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns S\+DL window handle. 
+
+\begin{DoxyReturn}{Returns}
+S\+DL window handle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWindow_a520e7a72c81aa1bf3b8d7e4b59906569}\label{classWindow_a520e7a72c81aa1bf3b8d7e4b59906569}} 
+\index{Window@{Window}!init\+Window@{init\+Window}}
+\index{init\+Window@{init\+Window}!Window@{Window}}
+\subsubsection{\texorpdfstring{init\+Window()}{initWindow()}}
+{\footnotesize\ttfamily void Window\+::init\+Window (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{width,  }\item[{int32\+\_\+t}]{height,  }\item[{char const $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This funciton initialized S\+DL window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width of the window \\
+\hline
+{\em height} & height of the window \\
+\hline
+{\em name} & name of the window \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWindow_a31e1886b2016544baa55bedcc4f3b48b}\label{classWindow_a31e1886b2016544baa55bedcc4f3b48b}} 
+\index{Window@{Window}!process\+Event@{process\+Event}}
+\index{process\+Event@{process\+Event}!Window@{Window}}
+\subsubsection{\texorpdfstring{process\+Event()}{processEvent()}}
+{\footnotesize\ttfamily void Window\+::process\+Event (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event const \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This funciton processes one S\+DL event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & S\+DL event \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWindow_a65c68d5dc2ebc68108662978e86efd25}\label{classWindow_a65c68d5dc2ebc68108662978e86efd25}} 
+\index{Window@{Window}!process\+Window\+Event@{process\+Window\+Event}}
+\index{process\+Window\+Event@{process\+Window\+Event}!Window@{Window}}
+\subsubsection{\texorpdfstring{process\+Window\+Event()}{processWindowEvent()}}
+{\footnotesize\ttfamily void Window\+::process\+Window\+Event (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event const \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This function processes one S\+DL window event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & S\+DL event \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWindow_a10bc693cad6ea33409071ed50c3e880c}\label{classWindow_a10bc693cad6ea33409071ed50c3e880c}} 
+\index{Window@{Window}!set\+Callback@{set\+Callback}}
+\index{set\+Callback@{set\+Callback}!Window@{Window}}
+\subsubsection{\texorpdfstring{set\+Callback()}{setCallback()}}
+{\footnotesize\ttfamily void Window\+::set\+Callback (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{event,  }\item[{\hyperlink{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}{Event\+Callback} const \&}]{clb }\end{DoxyParamCaption})}
+
+
+
+This function sets callback for event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & event type from S\+DL \\
+\hline
+{\em clb} & callback \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWindow_ac1cd27329e92882a1527eece8aa4bef4}\label{classWindow_ac1cd27329e92882a1527eece8aa4bef4}} 
+\index{Window@{Window}!set\+Idle\+Callback@{set\+Idle\+Callback}}
+\index{set\+Idle\+Callback@{set\+Idle\+Callback}!Window@{Window}}
+\subsubsection{\texorpdfstring{set\+Idle\+Callback()}{setIdleCallback()}}
+{\footnotesize\ttfamily void Window\+::set\+Idle\+Callback (\begin{DoxyParamCaption}\item[{\hyperlink{classWindow_ae666e38583ffdec789fdfc85d6504d73}{Idle\+Callback} const \&}]{clb }\end{DoxyParamCaption})}
+
+
+
+This function sets idle callback -\/ function that is called when there are not events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clb} & callback \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWindow_a4cc4f07c386516c8607bfc7559319112}\label{classWindow_a4cc4f07c386516c8607bfc7559319112}} 
+\index{Window@{Window}!set\+Window\+Callback@{set\+Window\+Callback}}
+\index{set\+Window\+Callback@{set\+Window\+Callback}!Window@{Window}}
+\subsubsection{\texorpdfstring{set\+Window\+Callback()}{setWindowCallback()}}
+{\footnotesize\ttfamily void Window\+::set\+Window\+Callback (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{event,  }\item[{\hyperlink{classWindow_a0e7a1332f3c35705eeed4d7b1a568d61}{Event\+Callback} const \&}]{clb }\end{DoxyParamCaption})}
+
+
+
+This function sets window callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & window event type from S\+DL \\
+\hline
+{\em clb} & callback \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+student/\hyperlink{window_8hpp}{window.\+hpp}\item 
+student/\hyperlink{window_8cpp}{window.\+cpp}\end{DoxyCompactItemize}

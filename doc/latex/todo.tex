@@ -1,0 +1,249 @@
+
+\begin{DoxyRefList}
+\item[\label{todo__todo000019}%
+\Hypertarget{todo__todo000019}%
+Global \hyperlink{group__program__tasks_gafe72b55028369d1e9e9f8d087c76af09}{G\+PU\+:\+:attach\+Shaders} (Program\+ID prg, Vertex\+Shader vs, Fragment\+Shader fs)]Tato funkce by měla připojít k vybranému shader programu vertex a fragment shader.  
+\item[\label{todo__todo000014}%
+\Hypertarget{todo__todo000014}%
+Global \hyperlink{group__vertexpuller__tasks_gac7f9799e1a6a3b1cafb5f4c4c5e9555d}{G\+PU\+:\+:bind\+Vertex\+Puller} (Vertex\+Puller\+ID vao)]Tato funkce aktivuje nastavení vertex pulleru.~\newline
+ Pokud je daný vertex puller aktivován, atributy z bufferů jsou vybírány na základě jeho nastavení.~\newline
+  
+\item[\label{todo__todo000035}%
+\Hypertarget{todo__todo000035}%
+Global \hyperlink{group__draw__tasks_ga012ff10197fb3e5051b854a0028db31d}{G\+PU\+:\+:clear} (float r, float g, float b, float a)]Tato funkce by měla vyčistit framebuffer.~\newline
+ Barevný buffer vyčistí na barvu podle parametrů r g b a (0 -\/ nulová intenzita, 1 a větší -\/ maximální intenzita).~\newline
+ (0,0,0) -\/ černá barva, (1,1,1) -\/ bílá barva.~\newline
+ Hloubkový buffer nastaví na takovou hodnotu, která umožní rasterizaci trojúhelníka, který leží v rámci pohledového tělesa.~\newline
+ Hloubka by měla být tedy větší než maximální hloubka v N\+DC (normalized device coordinates).~\newline
+  
+\item[\label{todo__todo000003}%
+\Hypertarget{todo__todo000003}%
+Global \hyperlink{group__buffer__tasks_ga309724692e0d90a686642379f12d8d44}{G\+PU\+:\+:create\+Buffer} (uint64\+\_\+t size)]Tato funkce by měla na grafické kartě vytvořit buffer dat.~\newline
+ Velikost bufferu je v parameteru size (v bajtech).~\newline
+ Funkce by měla vrátit unikátní identifikátor identifikátor bufferu.~\newline
+ Na grafické kartě by mělo být možné alkovat libovolné množství bufferů o libovolné velikosti.~\newline
+  
+\item[\label{todo__todo000028}%
+\Hypertarget{todo__todo000028}%
+Global \hyperlink{group__framebuffer__tasks_gab041c171fc07011d13ec608fc94a1d1c}{G\+PU\+:\+:create\+Framebuffer} (uint32\+\_\+t width, uint32\+\_\+t height)]Tato funkce by měla alokovat framebuffer od daném rozlišení.~\newline
+ Framebuffer se skládá z barevného a hloukového bufferu.~\newline
+ Buffery obsahují width x height pixelů.~\newline
+ Barevný pixel je složen z 4 x uint8\+\_\+t hodnot -\/ to reprezentuje R\+G\+BA barvu.~\newline
+ Hloubkový pixel obsahuje 1 x float -\/ to reprezentuje hloubku.~\newline
+ Nultý pixel framebufferu je vlevo dole.~\newline
+  
+\item[\label{todo__todo000017}%
+\Hypertarget{todo__todo000017}%
+Global \hyperlink{group__program__tasks_gae1368a616ba5be607b9cf4dd1e60dfe0}{G\+PU\+:\+:create\+Program} ()]Tato funkce by měla vytvořit nový shader program.~\newline
+ Funkce vrací unikátní identifikátor nového proramu.~\newline
+ Program je seznam nastavení, které obsahuje\+: ukazatel na vertex a fragment shader.~\newline
+ Dále obsahuje uniformní proměnné a typ výstupních vertex attributů z vertex shaderu, které jsou použity pro interpolaci do fragment atributů.~\newline
+  
+\item[\label{todo__todo000008}%
+\Hypertarget{todo__todo000008}%
+Global \hyperlink{group__vertexpuller__tasks_gaabe965c10fea7cd8f8af3aa528915c92}{G\+PU\+:\+:create\+Vertex\+Puller} ()]Tato funkce vytvoří novou práznou tabulku s nastavením pro vertex puller.~\newline
+ Funkce by měla vrátit identifikátor nové tabulky. Prázdná tabulka s nastavením neobsahuje indexování a všechny čtecí hlavy jsou vypnuté.  
+\item[\label{todo__todo000004}%
+\Hypertarget{todo__todo000004}%
+Global \hyperlink{group__buffer__tasks_ga05fb19b7c8b51a92162517aa7f25a166}{G\+PU\+:\+:delete\+Buffer} (Buffer\+ID buffer)]Tato funkce uvolní buffer na grafické kartě. Buffer pro smazání je vybrán identifikátorem v parameteru \char`\"{}buffer\char`\"{}. Po uvolnění bufferu je identifikátor volný a může být znovu použit při vytvoření nového bufferu.  
+\item[\label{todo__todo000029}%
+\Hypertarget{todo__todo000029}%
+Global \hyperlink{group__framebuffer__tasks_gaaaa9fbf5f3c28f27f092c2c6883d6e60}{G\+PU\+:\+:delete\+Framebuffer} ()]tato funkce by měla dealokovat framebuffer.  
+\item[\label{todo__todo000018}%
+\Hypertarget{todo__todo000018}%
+Global \hyperlink{group__program__tasks_ga3f8363f9c27c3f900f258e6acee52683}{G\+PU\+:\+:delete\+Program} (Program\+ID prg)]Tato funkce by měla smazat vybraný shader program.~\newline
+ Funkce smaže nastavení shader programu.~\newline
+ Identifikátor programu se stane volným a může být znovu využit.~\newline
+  
+\item[\label{todo__todo000009}%
+\Hypertarget{todo__todo000009}%
+Global \hyperlink{group__vertexpuller__tasks_gadf91a9fec77d8d23f093458b36a733fc}{G\+PU\+:\+:delete\+Vertex\+Puller} (Vertex\+Puller\+ID vao)]Tato funkce by měla odstranit tabulku s nastavení pro vertex puller.~\newline
+ Parameter \char`\"{}vao\char`\"{} obsahuje identifikátor tabulky s nastavením.~\newline
+ Po uvolnění nastavení je identifiktátor volný a může být znovu použit.~\newline
+  
+\item[\label{todo__todo000013}%
+\Hypertarget{todo__todo000013}%
+Global \hyperlink{group__vertexpuller__tasks_gae95cab56d80cb888e71b25965dc868c5}{G\+PU\+:\+:disable\+Vertex\+Puller\+Head} (Vertex\+Puller\+ID vao, uint32\+\_\+t head)]Tato funkce zakáže čtecí hlavu daného vertex pulleru.~\newline
+ Pokud je čtecí hlava zakázána, hodnoty z bufferu se nebudou kopírovat do atributu vrcholu.~\newline
+ Parametry \char`\"{}vao\char`\"{} a \char`\"{}head\char`\"{} vybírají vertex puller a čtecí hlavu.~\newline
+  
+\item[\label{todo__todo000036}%
+\Hypertarget{todo__todo000036}%
+Global \hyperlink{group__draw__tasks_ga127436afbcbda852746dfb9dae885ecf}{G\+PU\+:\+:draw\+Triangles} (uint32\+\_\+t nof\+Vertices)]Tato funkce vykreslí trojúhelníky podle daného nastavení.~\newline
+ Vrcholy se budou vybírat podle nastavení z aktivního vertex pulleru (pomocí bind\+Vertex\+Puller).~\newline
+ Vertex shader a fragment shader se zvolí podle aktivního shader programu (pomocí use\+Program).~\newline
+ Parametr \char`\"{}nof\+Vertices\char`\"{} obsahuje počet vrcholů, který by se měl vykreslit (3 pro jeden trojúhelník).~\newline
+  
+\item[\label{todo__todo000012}%
+\Hypertarget{todo__todo000012}%
+Global \hyperlink{group__vertexpuller__tasks_ga61384d99754bda4d91790c49b1639b30}{G\+PU\+:\+:enable\+Vertex\+Puller\+Head} (Vertex\+Puller\+ID vao, uint32\+\_\+t head)]Tato funkce povolí čtecí hlavu daného vertex pulleru.~\newline
+ Pokud je čtecí hlava povolena, hodnoty z bufferu se budou kopírovat do atributu vrcholů vertex shaderu.~\newline
+ Parametr \char`\"{}vao\char`\"{} volí tabulku s nastavením vertex pulleru (vybírá vertex puller).~\newline
+ Parametr \char`\"{}head\char`\"{} volí čtecí hlavu.~\newline
+  
+\item[\label{todo__todo000006}%
+\Hypertarget{todo__todo000006}%
+Global \hyperlink{group__buffer__tasks_ga7b89dbe4afbfec3725c64000b37445af}{G\+PU\+:\+:get\+Buffer\+Data} (Buffer\+ID buffer, uint64\+\_\+t offset, uint64\+\_\+t size, void $\ast$data)]Tato funkce vykopíruje data z \char`\"{}gpu\char`\"{} na cpu. Data by měla být vykopírována z bufferu vybraného parametrem \char`\"{}buffer\char`\"{}.~\newline
+ Parametr size určuje kolik dat (v bajtech) se překopíruje.~\newline
+ Parametr offset určuje místo v bufferu (posun v bajtech) odkud se začne kopírovat.~\newline
+ Parametr data obsahuje ukazatel, kam se data nakopírují.~\newline
+  
+\item[\label{todo__todo000031}%
+\Hypertarget{todo__todo000031}%
+Global \hyperlink{group__framebuffer__tasks_ga67504b8136ef6283ad6efbb5323a0ef8}{G\+PU\+:\+:get\+Framebuffer\+Color} ()]Tato funkce by měla vrátit ukazatel na začátek barevného bufferu.~\newline
+  
+\item[\label{todo__todo000032}%
+\Hypertarget{todo__todo000032}%
+Global \hyperlink{group__framebuffer__tasks_gab755d51ff9686df1fb9b2892b9861c1d}{G\+PU\+:\+:get\+Framebuffer\+Depth} ()]tato funkce by mla vrátit ukazatel na začátek hloubkového bufferu.~\newline
+  
+\item[\label{todo__todo000034}%
+\Hypertarget{todo__todo000034}%
+Global \hyperlink{group__framebuffer__tasks_gaa115f7153407b8020fd153b71abccf0e}{G\+PU\+:\+:get\+Framebuffer\+Height} ()]Tato funkce by měla vrátit výšku framebufferu.  
+\item[\label{todo__todo000033}%
+\Hypertarget{todo__todo000033}%
+Global \hyperlink{group__framebuffer__tasks_ga467b565d440e5742b7ebc104a2d70ce3}{G\+PU\+:\+:get\+Framebuffer\+Width} ()]Tato funkce by měla vrátit šířku framebufferu.  
+\item[\label{todo__todo000001}%
+\Hypertarget{todo__todo000001}%
+Global \hyperlink{group__gpu__init_ga2ca7973e32f63ba3472166a007419a75}{G\+PU\+:\+:G\+PU} ()]Zde můžete alokovat/inicializovat potřebné proměnné grafické karty  
+\item[\label{todo__todo000007}%
+\Hypertarget{todo__todo000007}%
+Global \hyperlink{group__buffer__tasks_gae725a1955d617a7e655ab751c6e05e97}{G\+PU\+:\+:is\+Buffer} (Buffer\+ID buffer)]Tato funkce by měla vrátit true pokud buffer je identifikátor existující bufferu.~\newline
+ Tato funkce by měla vrátit false, pokud buffer není identifikátor existujícího bufferu. (nebo bufferu, který byl smazán).~\newline
+ Pro empty\+Id vrací false.~\newline
+  
+\item[\label{todo__todo000022}%
+\Hypertarget{todo__todo000022}%
+Global \hyperlink{group__program__tasks_ga481c0eb5be3150af401a58fa167506e0}{G\+PU\+:\+:is\+Program} (Program\+ID prg)]tato funkce by měla zjistit, zda daný program existuje.~\newline
+ Funkce vráti true, pokud program existuje.~\newline
+  
+\item[\label{todo__todo000016}%
+\Hypertarget{todo__todo000016}%
+Global \hyperlink{group__vertexpuller__tasks_ga09408b5ca4250292217f3330ae674319}{G\+PU\+:\+:is\+Vertex\+Puller} (Vertex\+Puller\+ID vao)]Tato funkce otestuje, zda daný vertex puller existuje. Pokud ano, funkce vrací true.  
+\item[\label{todo__todo000023}%
+\Hypertarget{todo__todo000023}%
+Global \hyperlink{group__program__tasks_gaa9e9717db5520e6c34a1b380d6321758}{G\+PU\+:\+:program\+Uniform1f} (Program\+ID prg, uint32\+\_\+t uniform\+Id, float const \&d)]tato funkce by měla nastavit uniformní proměnnou shader programu.~\newline
+ Parametr \char`\"{}prg\char`\"{} vybírá shader program.~\newline
+ Parametr \char`\"{}uniform\+Id\char`\"{} vybírá uniformní proměnnou. Maximální počet uniformních proměnných je uložen v programné \hyperlink{fwd_8hpp_abb316cce98ea6938a7112c5f932d673f}{max\+Uniforms}.~\newline
+ Parametr \char`\"{}d\char`\"{} obsahuje data (1 float).~\newline
+  
+\item[\label{todo__todo000024}%
+\Hypertarget{todo__todo000024}%
+Global \hyperlink{group__program__tasks_gac34e13783980686c497adda156923b1d}{G\+PU\+:\+:program\+Uniform2f} (Program\+ID prg, uint32\+\_\+t uniform\+Id, glm\+::vec2 const \&d)]tato funkce dělá obdobnou věc jako funkce program\+Uniform1f.~\newline
+ Místo 1 floatu nahrává 2 floaty.  
+\item[\label{todo__todo000025}%
+\Hypertarget{todo__todo000025}%
+Global \hyperlink{group__program__tasks_ga06b1aca1375a9cfff13d3b66defe485f}{G\+PU\+:\+:program\+Uniform3f} (Program\+ID prg, uint32\+\_\+t uniform\+Id, glm\+::vec3 const \&d)]tato funkce dělá obdobnou věc jako funkce program\+Uniform1f.~\newline
+ Místo 1 floatu nahrává 3 floaty.  
+\item[\label{todo__todo000026}%
+\Hypertarget{todo__todo000026}%
+Global \hyperlink{group__program__tasks_gad703e87e1652a78261739c6b5108c852}{G\+PU\+:\+:program\+Uniform4f} (Program\+ID prg, uint32\+\_\+t uniform\+Id, glm\+::vec4 const \&d)]tato funkce dělá obdobnou věc jako funkce program\+Uniform1f.~\newline
+ Místo 1 floatu nahrává 4 floaty.  
+\item[\label{todo__todo000027}%
+\Hypertarget{todo__todo000027}%
+Global \hyperlink{group__program__tasks_gac3b490a674226c0510ac3c0b784010fa}{G\+PU\+:\+:program\+Uniform\+Matrix4f} (Program\+ID prg, uint32\+\_\+t uniform\+Id, glm\+::mat4 const \&d)]tato funkce dělá obdobnou věc jako funkce program\+Uniform1f.~\newline
+ Místo 1 floatu nahrává matici 4x4 (16 floatů).  
+\item[\label{todo__todo000030}%
+\Hypertarget{todo__todo000030}%
+Global \hyperlink{group__framebuffer__tasks_ga6391eaf70194c39bf523ddc875ca176d}{G\+PU\+:\+:resize\+Framebuffer} (uint32\+\_\+t width, uint32\+\_\+t height)]Tato funkce by měla změnit velikost framebuffer.  
+\item[\label{todo__todo000005}%
+\Hypertarget{todo__todo000005}%
+Global \hyperlink{group__buffer__tasks_ga97e1e76065fd913d6624b4c03164dcec}{G\+PU\+:\+:set\+Buffer\+Data} (Buffer\+ID buffer, uint64\+\_\+t offset, uint64\+\_\+t size, void const $\ast$data)]Tato funkce nakopíruje data z cpu na \char`\"{}gpu\char`\"{}.~\newline
+ Data by měla být nakopírována do bufferu vybraného parametrem \char`\"{}buffer\char`\"{}.~\newline
+ Parametr size určuje, kolik dat (v bajtech) se překopíruje.~\newline
+ Parametr offset určuje místo v bufferu (posun v bajtech) kam se data nakopírují.~\newline
+ Parametr data obsahuje ukazatel na data na cpu pro kopírování.~\newline
+  
+\item[\label{todo__todo000010}%
+\Hypertarget{todo__todo000010}%
+Global \hyperlink{group__vertexpuller__tasks_gae9ffbcfa3b43ac9b3ea53e5bc44f83cc}{G\+PU\+:\+:set\+Vertex\+Puller\+Head} (Vertex\+Puller\+ID vao, uint32\+\_\+t head, Attribute\+Type type, uint64\+\_\+t stride, uint64\+\_\+t offset, Buffer\+ID buffer)]Tato funkce nastaví jednu čtecí hlavu vertex pulleru.~\newline
+ Parametr \char`\"{}vao\char`\"{} vybírá tabulku s nastavením.~\newline
+ Parametr \char`\"{}head\char`\"{} vybírá čtecí hlavu vybraného vertex pulleru.~\newline
+ Parametr \char`\"{}type\char`\"{} nastaví typ atributu, který čtecí hlava čte. Tímto se vybere kolik dat v bajtech se přečte.~\newline
+ Parametr \char`\"{}stride\char`\"{} nastaví krok čtecí hlavy.~\newline
+ Parametr \char`\"{}offset\char`\"{} nastaví počáteční pozici čtecí hlavy.~\newline
+ Parametr \char`\"{}buffer\char`\"{} vybere buffer, ze kterého bude čtecí hlava číst.~\newline
+  
+\item[\label{todo__todo000011}%
+\Hypertarget{todo__todo000011}%
+Global \hyperlink{group__vertexpuller__tasks_gae5238dbc60eb2ece94df110945a4f46b}{G\+PU\+:\+:set\+Vertex\+Puller\+Indexing} (Vertex\+Puller\+ID vao, Index\+Type type, Buffer\+ID buffer)]Tato funkce nastaví indexování vertex pulleru. Parametr \char`\"{}vao\char`\"{} vybírá tabulku s nastavením.~\newline
+ Parametr \char`\"{}type\char`\"{} volí typ indexu, který je uložený v bufferu.~\newline
+ Parametr \char`\"{}buffer\char`\"{} volí buffer, ve kterém jsou uloženy indexy.~\newline
+  
+\item[\label{todo__todo000020}%
+\Hypertarget{todo__todo000020}%
+Global \hyperlink{group__program__tasks_gaff499d4f692ea0dd7125bfd324957619}{G\+PU\+:\+:set\+V\+S2\+F\+S\+Type} (Program\+ID prg, uint32\+\_\+t attrib, Attribute\+Type type)]tato funkce by měla zvolit typ vertex atributu, který je posílán z vertex shaderu do fragment shaderu.~\newline
+ V průběhu rasterizace vznikají fragment.~\newline
+ Fragment obsahují fragment atributy.~\newline
+ Tyto atributy obsahují interpolované hodnoty vertex atributů.~\newline
+ Tato funkce vybere jakého typu jsou tyto interpolované atributy.~\newline
+ Bez jakéhokoliv nastavení jsou atributy prázdne \hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aba2b45bdc11e2a4a6e86aab2ac693cbb}{Attribute\+Type\+::\+E\+M\+P\+TY}~\newline
+  
+\item[\label{todo__todo000015}%
+\Hypertarget{todo__todo000015}%
+Global \hyperlink{group__vertexpuller__tasks_gafdfb7e3cd24d595af6650b68ba9f6f24}{G\+PU\+:\+:unbind\+Vertex\+Puller} ()]Tato funkce deaktivuje vertex puller. To většinou znamená, že se vybere neexistující \char`\"{}empty\+I\+D\char`\"{} vertex puller.  
+\item[\label{todo__todo000021}%
+\Hypertarget{todo__todo000021}%
+Global \hyperlink{group__program__tasks_ga4f2bd468b0ef5fed61ffa34314319a20}{G\+PU\+:\+:use\+Program} (Program\+ID prg)]tato funkce by měla vybrat aktivní shader program.  
+\item[\label{todo__todo000002}%
+\Hypertarget{todo__todo000002}%
+Global \hyperlink{group__gpu__init_gac4d153a08d3b9f40e5a8f1634f4a9e78}{G\+PU\+:\+:$\sim$\+G\+PU} ()]Zde můžete dealokovat/deinicializovat grafickou kartu  
+\item[\label{todo__todo000037}%
+\Hypertarget{todo__todo000037}%
+Module \hyperlink{group__gpu__init}{gpu\+\_\+init} ]zde si můžete vytvořit proměnné grafické karty (buffery, programy, ...)  
+\item[\label{todo__todo000039}%
+\Hypertarget{todo__todo000039}%
+Global \hyperlink{group__shader__side_gacad0f238507689fa275995e3aa67ce22}{phong\+\_\+\+FS} (\hyperlink{structOutFragment}{Out\+Fragment} \&out\+Fragment, \hyperlink{structInFragment}{In\+Fragment} const \&in\+Fragment, \hyperlink{structUniforms}{Uniforms} const \&uniforms)]Naimplementujte fragment shader, který počítá phongův osvětlovací model s phongovým stínováním.~\newline
+ {\bfseries Vstup\+:}~\newline
+ Vstupní fragment by měl v nultém fragment atributu obsahovat interpolovanou pozici ve world-\/space a v prvním fragment atributu obsahovat interpolovanou normálu ve world-\/space.~\newline
+ {\bfseries Výstup\+:}~\newline
+ Barvu zapište do proměnné gl\+\_\+\+Frag\+Color ve výstupní struktuře.~\newline
+ {\bfseries Uniformy\+:}~\newline
+ Pozici kamery přečtěte z uniformní 3 a pozici světla přečtěte z uniformní 2. ~\newline
+ ~\newline
+ Dejte si pozor na velikost normálového vektoru, při lineární interpolaci v rasterizaci může dojít ke zkrácení. Zapište barvu do proměnné gl\+\_\+\+Frag\+Color ve výstupní struktuře. Shininess faktor nastavte na 40.\+f ~\newline
+ ~\newline
+ Difuzní barva materiálu (textura) by měla být procedurálně generována. Textura je složena zde dvou částí\+: sinusové pruhy a bílý sněhový poprašek. Textura je zkombinována z těchto dvou částí podle sklonu normály. V případě, že normála směřuje kolmo vzhůru je textura čistě bílá. V případě, že normála směřuje vodorovně nebo dolů je textura složena ze sinusových pruhů. Bílá textura a textura sinusových pruhů je lineráně míchana pomocí interpolačního parameteru t. Interpolační parameter t spočtěte z y komponenty normály pomocí t = y$\ast$y (samozřejmě s ohledem na negativní čísla). 
+\item[\label{todo__todo000038}%
+\Hypertarget{todo__todo000038}%
+Global \hyperlink{group__shader__side_ga128e1d2afb1e73269e5a1d4eaf4c23cb}{phong\+\_\+\+VS} (\hyperlink{structOutVertex}{Out\+Vertex} \&out\+Vertex, \hyperlink{structInVertex}{In\+Vertex} const \&in\+Vertex, \hyperlink{structUniforms}{Uniforms} const \&uniforms)]Naimplementujte vertex shader, který transformuje vstupní vrcholy do clip-\/space.~\newline
+ {\bfseries Vstupy\+:}~\newline
+ Vstupní vrchol by měl v nultém atributu obsahovat pozici vrcholu ve world-\/space (vec3) a v prvním atributu obsahovat normálu vrcholu ve world-\/space (vec3).~\newline
+ {\bfseries Výstupy\+:}~\newline
+ Výstupní vrchol by měl v nultém atributu obsahovat pozici vrcholu (vec3) ve world-\/space a v prvním atributu obsahovat normálu vrcholu ve world-\/space (vec3). Výstupní vrchol obsahuje pozici a normálu vrcholu proto, že chceme počítat osvětlení ve world-\/space ve fragment shaderu.~\newline
+ {\bfseries Uniformy\+:}~\newline
+ Vertex shader by měl pro transformaci využít uniformní proměnné obsahující view a projekční matici. View matici čtěte z nulté uniformní proměnné a projekční matici čtěte z první uniformní proměnné. ~\newline
+ Využijte vektorové a maticové funkce. Nepředávajte si data do shaderu pomocí globálních proměnných. Vrchol v clip-\/space by měl být zapsán do proměnné gl\+\_\+\+Position ve výstupní struktuře.  
+\item[\label{todo__todo000041}%
+\Hypertarget{todo__todo000041}%
+Global \hyperlink{group__cpu__side_ga100e32901442800e1c155b5ce089f7c5}{Phong\+Method\+:\+:on\+Draw} (glm\+::mat4 const \&proj, glm\+::mat4 const \&view, glm\+::vec3 const \&light, glm\+::vec3 const \&camera) override]Doprogramujte kreslící funkci. Zde byste měli aktivovat shader program, aktivovat vertex puller, nahrát data do uniformních proměnných a vykreslit trojúhelníky pomocí funkce \hyperlink{group__draw__tasks_ga127436afbcbda852746dfb9dae885ecf}{G\+P\+U\+::draw\+Triangles}. Data pro uniformní proměnné naleznete v parametrech této funkce. {\bfseries Seznam funkcí, které jistě využijete\+:}
+\begin{DoxyItemize}
+\item gpu.\+bind\+Vertex\+Puller()
+\item gpu.\+use\+Program()
+\item gpu.\+program\+Uniform\+Matrix4f()
+\item gpu.\+program\+Uniform3f ()
+\item gpu.\+draw\+Triangles()
+\item gpu.\+unbind\+Vertex\+Puller()  
+\end{DoxyItemize}
+\item[\label{todo__todo000040}%
+\Hypertarget{todo__todo000040}%
+Global \hyperlink{group__cpu__side_ga609f942b12f18a74313937d4aa071c0b}{Phong\+Method\+:\+:Phong\+Method} ()]Doprogramujte inicializační funkci. Zde byste měli vytvořit buffery na \hyperlink{classGPU}{G\+PU}, nahrát data do bufferů, vytvořit vertex puller a správně jej nakonfigurovat, vytvořit program, připojit k němu shadery a nastavit atributy, které se posílají mezi vs a fs. Do bufferů nahrajte vrcholy králička (pozice, normály) a indexy na vrcholy ze souboru \hyperlink{bunny_8hpp}{bunny.\+hpp}. Shader program by měl odkazovat na funkce/shadery phong\+\_\+\+VS a phong\+\_\+\+FS. V konfiguraci vertex pulleru nastavte dvě čtecí hlavy. Jednu pro pozice vrcholů a druhou pro normály vrcholů. Nultý vertex/fragment atribut by měl obsahovat pozici vertexu. První vertex/fragment atribut by měl obsahovat normálu vertexu. Nastavte, které atributy (jaký typ) se posílají z vertex shaderu do fragment shaderu. {\bfseries Seznam funkcí, které jistě využijete\+:}
+\begin{DoxyItemize}
+\item gpu.\+create\+Buffer()
+\item gpu.\+set\+Buffer\+Data()
+\item gpu.\+create\+Vertex\+Puller()
+\item gpu.\+set\+Vertex\+Puller\+Indexing()
+\item gpu.\+set\+Vertex\+Puller\+Head()
+\item gpu.\+enable\+Vertex\+Puller\+Head()
+\item gpu.\+create\+Program()
+\item gpu.\+attach\+Shaders()
+\item gpu.\+set\+V\+S2\+F\+S\+Type()  
+\end{DoxyItemize}
+\item[\label{todo__todo000042}%
+\Hypertarget{todo__todo000042}%
+Global \hyperlink{group__cpu__side_ga64fbf177f01aca9027d510611a2dad73}{Phong\+Method\+:\+:$\sim$\+Phong\+Method} ()]Zde uvolněte alokované zdroje {\bfseries Seznam funkcí}
+\begin{DoxyItemize}
+\item gpu.\+delete\+Program()
+\item gpu.\+delete\+Vertex\+Puller()
+\item gpu.\+delete\+Buffer() 
+\end{DoxyItemize}
+\end{DoxyRefList}

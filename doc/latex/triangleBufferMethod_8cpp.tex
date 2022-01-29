@@ -1,0 +1,64 @@
+\hypertarget{triangleBufferMethod_8cpp}{}\section{student/triangle\+Buffer\+Method.cpp File Reference}
+\label{triangleBufferMethod_8cpp}\index{student/triangle\+Buffer\+Method.\+cpp@{student/triangle\+Buffer\+Method.\+cpp}}
+
+
+This file contains implementation of rendering method that renders triangle stored in buffer.  
+
+
+{\ttfamily \#include $<$student/triangle\+Buffer\+Method.\+hpp$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{triangleBufferMethod_8cpp_ae86fdea32a987d930bb2a4b3fd8f99e3}{triangle\+Buffer\+\_\+\+VS} (\hyperlink{structOutVertex}{Out\+Vertex} \&out\+Vertex, \hyperlink{structInVertex}{In\+Vertex} const \&in\+Vertex, \hyperlink{structUniforms}{Uniforms} const \&uniforms)
+\begin{DoxyCompactList}\small\item\em This function is vertex shader of triangle buffer method. \end{DoxyCompactList}\item 
+void \hyperlink{triangleBufferMethod_8cpp_ace37cd2e51526171054e1eed07c0d928}{triangle\+Buffer\+\_\+\+FS} (\hyperlink{structOutFragment}{Out\+Fragment} \&out\+Fragment, \hyperlink{structInFragment}{In\+Fragment} const \&in\+Fragment, \hyperlink{structUniforms}{Uniforms} const \&uniforms)
+\begin{DoxyCompactList}\small\item\em This function is fragment shader of triangle buffer method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains implementation of rendering method that renders triangle stored in buffer. 
+
+\begin{DoxyAuthor}{Author}
+Tomáš Milet, \href{mailto:imilet@fit.vutbr.cz}{\tt imilet@fit.\+vutbr.\+cz} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{triangleBufferMethod_8cpp_ace37cd2e51526171054e1eed07c0d928}\label{triangleBufferMethod_8cpp_ace37cd2e51526171054e1eed07c0d928}} 
+\index{triangle\+Buffer\+Method.\+cpp@{triangle\+Buffer\+Method.\+cpp}!triangle\+Buffer\+\_\+\+FS@{triangle\+Buffer\+\_\+\+FS}}
+\index{triangle\+Buffer\+\_\+\+FS@{triangle\+Buffer\+\_\+\+FS}!triangle\+Buffer\+Method.\+cpp@{triangle\+Buffer\+Method.\+cpp}}
+\subsubsection{\texorpdfstring{triangle\+Buffer\+\_\+\+F\+S()}{triangleBuffer\_FS()}}
+{\footnotesize\ttfamily void triangle\+Buffer\+\_\+\+FS (\begin{DoxyParamCaption}\item[{\hyperlink{structOutFragment}{Out\+Fragment} \&}]{out\+Fragment,  }\item[{\hyperlink{structInFragment}{In\+Fragment} const \&}]{in\+Fragment,  }\item[{\hyperlink{structUniforms}{Uniforms} const \&}]{uniforms }\end{DoxyParamCaption})}
+
+
+
+This function is fragment shader of triangle buffer method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Fragment} & output fragment \\
+\hline
+{\em in\+Fragment} & input fragment \\
+\hline
+{\em uniforms} & uniform variables \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{triangleBufferMethod_8cpp_ae86fdea32a987d930bb2a4b3fd8f99e3}\label{triangleBufferMethod_8cpp_ae86fdea32a987d930bb2a4b3fd8f99e3}} 
+\index{triangle\+Buffer\+Method.\+cpp@{triangle\+Buffer\+Method.\+cpp}!triangle\+Buffer\+\_\+\+VS@{triangle\+Buffer\+\_\+\+VS}}
+\index{triangle\+Buffer\+\_\+\+VS@{triangle\+Buffer\+\_\+\+VS}!triangle\+Buffer\+Method.\+cpp@{triangle\+Buffer\+Method.\+cpp}}
+\subsubsection{\texorpdfstring{triangle\+Buffer\+\_\+\+V\+S()}{triangleBuffer\_VS()}}
+{\footnotesize\ttfamily void triangle\+Buffer\+\_\+\+VS (\begin{DoxyParamCaption}\item[{\hyperlink{structOutVertex}{Out\+Vertex} \&}]{out\+Vertex,  }\item[{\hyperlink{structInVertex}{In\+Vertex} const \&}]{in\+Vertex,  }\item[{\hyperlink{structUniforms}{Uniforms} const \&}]{uniforms }\end{DoxyParamCaption})}
+
+
+
+This function is vertex shader of triangle buffer method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Vertex} & output vertex \\
+\hline
+{\em in\+Vertex} & input vertex \\
+\hline
+{\em uniforms} & uniform variables \\
+\hline
+\end{DoxyParams}

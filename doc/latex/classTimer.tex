@@ -1,0 +1,82 @@
+\hypertarget{classTimer}{}\section{Timer$<$ T\+Y\+PE $>$ Class Template Reference}
+\label{classTimer}\index{Timer$<$ T\+Y\+P\+E $>$@{Timer$<$ T\+Y\+P\+E $>$}}
+
+
+This class represents a timer.  
+
+
+
+
+{\ttfamily \#include $<$timer.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTimer_ac2eb752a6b9637733fb7eb45a57d009a}\label{classTimer_ac2eb752a6b9637733fb7eb45a57d009a}} 
+\hyperlink{classTimer_ac2eb752a6b9637733fb7eb45a57d009a}{Timer} ()
+\begin{DoxyCompactList}\small\item\em Construcor of timer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTimer_adff965ac1f6c3b04fd5e62c177662f3f}\label{classTimer_adff965ac1f6c3b04fd5e62c177662f3f}} 
+void \hyperlink{classTimer_adff965ac1f6c3b04fd5e62c177662f3f}{reset} ()
+\begin{DoxyCompactList}\small\item\em This function resets the timer. \end{DoxyCompactList}\item 
+T\+Y\+PE \hyperlink{classTimer_ac04d0efef266558d59d647c769d2738d}{elapsed\+From\+Start} ()
+\begin{DoxyCompactList}\small\item\em This function returns time elapsed from the construction of the timer. \end{DoxyCompactList}\item 
+T\+Y\+PE \hyperlink{classTimer_a83d6f139a67a082e00c7ed74fcd4d83d}{elapsed\+From\+Last} ()
+\begin{DoxyCompactList}\small\item\em This function returns time elapsed from the last time this function was called. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTimer_a9641c1e7a368b9299dcce0ce2e790791}\label{classTimer_a9641c1e7a368b9299dcce0ce2e790791}} 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::high\+\_\+resolution\+\_\+clock $>$ \hyperlink{classTimer_a9641c1e7a368b9299dcce0ce2e790791}{start}
+\begin{DoxyCompactList}\small\item\em Timepoint of timer construction. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTimer_ae0bd3fd7d2d26b40bf226e1adc3e9994}\label{classTimer_ae0bd3fd7d2d26b40bf226e1adc3e9994}} 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::high\+\_\+resolution\+\_\+clock $>$ \hyperlink{classTimer_ae0bd3fd7d2d26b40bf226e1adc3e9994}{last}
+\begin{DoxyCompactList}\small\item\em Timepoint of the last elapsed\+From\+Last call. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T\+Y\+PE$>$\newline
+class Timer$<$ T\+Y\+P\+E $>$}
+
+This class represents a timer. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T\+Y\+PE} & type of timer \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimer_a83d6f139a67a082e00c7ed74fcd4d83d}\label{classTimer_a83d6f139a67a082e00c7ed74fcd4d83d}} 
+\index{Timer@{Timer}!elapsed\+From\+Last@{elapsed\+From\+Last}}
+\index{elapsed\+From\+Last@{elapsed\+From\+Last}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{elapsed\+From\+Last()}{elapsedFromLast()}}
+{\footnotesize\ttfamily template$<$typename T\+Y\+PE$>$ \\
+T\+Y\+PE \hyperlink{classTimer}{Timer}$<$ T\+Y\+PE $>$\+::elapsed\+From\+Last (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function returns time elapsed from the last time this function was called. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimer_ac04d0efef266558d59d647c769d2738d}\label{classTimer_ac04d0efef266558d59d647c769d2738d}} 
+\index{Timer@{Timer}!elapsed\+From\+Start@{elapsed\+From\+Start}}
+\index{elapsed\+From\+Start@{elapsed\+From\+Start}!Timer@{Timer}}
+\subsubsection{\texorpdfstring{elapsed\+From\+Start()}{elapsedFromStart()}}
+{\footnotesize\ttfamily template$<$typename T\+Y\+PE$>$ \\
+T\+Y\+PE \hyperlink{classTimer}{Timer}$<$ T\+Y\+PE $>$\+::elapsed\+From\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function returns time elapsed from the construction of the timer. 
+
+\begin{DoxyReturn}{Returns}
+time elapsed from start 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+student/\hyperlink{timer_8hpp}{timer.\+hpp}\end{DoxyCompactItemize}

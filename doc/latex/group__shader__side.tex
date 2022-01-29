@@ -1,0 +1,90 @@
+\hypertarget{group__shader__side}{}\section{06. Implementace vertex/fragment shaderu phongovy metody}
+\label{group__shader__side}\index{06. Implementace vertex/fragment shaderu phongovy metody@{06. Implementace vertex/fragment shaderu phongovy metody}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__shader__side_ga128e1d2afb1e73269e5a1d4eaf4c23cb}{phong\+\_\+\+VS} (\hyperlink{structOutVertex}{Out\+Vertex} \&out\+Vertex, \hyperlink{structInVertex}{In\+Vertex} const \&in\+Vertex, \hyperlink{structUniforms}{Uniforms} const \&uniforms)
+\begin{DoxyCompactList}\small\item\em This function represents vertex shader of phong method. \end{DoxyCompactList}\item 
+void \hyperlink{group__shader__side_gacad0f238507689fa275995e3aa67ce22}{phong\+\_\+\+FS} (\hyperlink{structOutFragment}{Out\+Fragment} \&out\+Fragment, \hyperlink{structInFragment}{In\+Fragment} const \&in\+Fragment, \hyperlink{structUniforms}{Uniforms} const \&uniforms)
+\begin{DoxyCompactList}\small\item\em This function represents fragment shader of phong method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Vašim úkolem ve vertex a fragment shaderu je transformovat trojúhelníky pomocí view a projekční matice a spočítat phongův osvětlovací model. Vašim úkolem také je správně vypočítat procedurální barvu. Následující obrázek zobrazuje shadery v různém stupni implementace. Horní řáděk zobrazuje procedurální texturu. Prostřední řádek zobrazuje model králička s nanesenou texturou, ale bez použití transformačních matic. Dolní řádek zobrazuje model po použítí transformačních matic.
+
+ 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__shader__side_gacad0f238507689fa275995e3aa67ce22}\label{group__shader__side_gacad0f238507689fa275995e3aa67ce22}} 
+\index{06. Implementace vertex/fragment shaderu phongovy metody@{06. Implementace vertex/fragment shaderu phongovy metody}!phong\+\_\+\+FS@{phong\+\_\+\+FS}}
+\index{phong\+\_\+\+FS@{phong\+\_\+\+FS}!06. Implementace vertex/fragment shaderu phongovy metody@{06. Implementace vertex/fragment shaderu phongovy metody}}
+\subsubsection{\texorpdfstring{phong\+\_\+\+F\+S()}{phong\_FS()}}
+{\footnotesize\ttfamily void phong\+\_\+\+FS (\begin{DoxyParamCaption}\item[{\hyperlink{structOutFragment}{Out\+Fragment} \&}]{out\+Fragment,  }\item[{\hyperlink{structInFragment}{In\+Fragment} const \&}]{in\+Fragment,  }\item[{\hyperlink{structUniforms}{Uniforms} const \&}]{uniforms }\end{DoxyParamCaption})}
+
+
+
+This function represents fragment shader of phong method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Fragment} & output fragment \\
+\hline
+{\em in\+Fragment} & input fragment \\
+\hline
+{\em uniforms} & uniform variables \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000039}{Todo}]Naimplementujte fragment shader, který počítá phongův osvětlovací model s phongovým stínováním.~\newline
+ {\bfseries Vstup\+:}~\newline
+ Vstupní fragment by měl v nultém fragment atributu obsahovat interpolovanou pozici ve world-\/space a v prvním fragment atributu obsahovat interpolovanou normálu ve world-\/space.~\newline
+ {\bfseries Výstup\+:}~\newline
+ Barvu zapište do proměnné gl\+\_\+\+Frag\+Color ve výstupní struktuře.~\newline
+ {\bfseries Uniformy\+:}~\newline
+ Pozici kamery přečtěte z uniformní 3 a pozici světla přečtěte z uniformní 2. ~\newline
+ ~\newline
+ Dejte si pozor na velikost normálového vektoru, při lineární interpolaci v rasterizaci může dojít ke zkrácení. Zapište barvu do proměnné gl\+\_\+\+Frag\+Color ve výstupní struktuře. Shininess faktor nastavte na 40.\+f ~\newline
+ ~\newline
+ Difuzní barva materiálu (textura) by měla být procedurálně generována. Textura je složena zde dvou částí\+: sinusové pruhy a bílý sněhový poprašek. Textura je zkombinována z těchto dvou částí podle sklonu normály. V případě, že normála směřuje kolmo vzhůru je textura čistě bílá. V případě, že normála směřuje vodorovně nebo dolů je textura složena ze sinusových pruhů. Bílá textura a textura sinusových pruhů je lineráně míchana pomocí interpolačního parameteru t. Interpolační parameter t spočtěte z y komponenty normály pomocí t = y$\ast$y (samozřejmě s ohledem na negativní čísla).\end{DoxyRefDesc}
+
+
+ ~\newline
+ ~\newline
+ Sinusové pruhy jsou naneseny v rovině xy pomocí planárního nanášení textur, viz následující obrázek\+: 
+
+Sinusová textura obsahuje 10 pruhů 5 zelených (0,0.\+5,0) a pět žlutých (1,1,0). Pruhy mají stejnou tloušku. Textura má velikost 1x1 a opakuje se (platí i pro záporné souřadnice). Pruhy jsou zvlněny pomocí funkce sinus. Amplituda funkce sinus je 0.\+1. Perioda je nastavena na $ \frac{2 \cdot \pi}{10} $. Výchylku pruhu lze tedy spočítat jako $ \frac{sin(y \cdot 10)}{10} $ Tvorba textury je znázorněna na následujícím obrázku\+:
+
+
+
+Spekulární barvu materiálu nastavte na čistou bílou. Barvu světla nastavte na bílou. Nepoužívejte ambientní světlo.~\newline
+
+
+ \mbox{\Hypertarget{group__shader__side_ga128e1d2afb1e73269e5a1d4eaf4c23cb}\label{group__shader__side_ga128e1d2afb1e73269e5a1d4eaf4c23cb}} 
+\index{06. Implementace vertex/fragment shaderu phongovy metody@{06. Implementace vertex/fragment shaderu phongovy metody}!phong\+\_\+\+VS@{phong\+\_\+\+VS}}
+\index{phong\+\_\+\+VS@{phong\+\_\+\+VS}!06. Implementace vertex/fragment shaderu phongovy metody@{06. Implementace vertex/fragment shaderu phongovy metody}}
+\subsubsection{\texorpdfstring{phong\+\_\+\+V\+S()}{phong\_VS()}}
+{\footnotesize\ttfamily void phong\+\_\+\+VS (\begin{DoxyParamCaption}\item[{\hyperlink{structOutVertex}{Out\+Vertex} \&}]{out\+Vertex,  }\item[{\hyperlink{structInVertex}{In\+Vertex} const \&}]{in\+Vertex,  }\item[{\hyperlink{structUniforms}{Uniforms} const \&}]{uniforms }\end{DoxyParamCaption})}
+
+
+
+This function represents vertex shader of phong method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Vertex} & output vertex \\
+\hline
+{\em in\+Vertex} & input vertex \\
+\hline
+{\em uniforms} & uniform variables \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000038}{Todo}]Naimplementujte vertex shader, který transformuje vstupní vrcholy do clip-\/space.~\newline
+ {\bfseries Vstupy\+:}~\newline
+ Vstupní vrchol by měl v nultém atributu obsahovat pozici vrcholu ve world-\/space (vec3) a v prvním atributu obsahovat normálu vrcholu ve world-\/space (vec3).~\newline
+ {\bfseries Výstupy\+:}~\newline
+ Výstupní vrchol by měl v nultém atributu obsahovat pozici vrcholu (vec3) ve world-\/space a v prvním atributu obsahovat normálu vrcholu ve world-\/space (vec3). Výstupní vrchol obsahuje pozici a normálu vrcholu proto, že chceme počítat osvětlení ve world-\/space ve fragment shaderu.~\newline
+ {\bfseries Uniformy\+:}~\newline
+ Vertex shader by měl pro transformaci využít uniformní proměnné obsahující view a projekční matici. View matici čtěte z nulté uniformní proměnné a projekční matici čtěte z první uniformní proměnné. ~\newline
+ Využijte vektorové a maticové funkce. Nepředávajte si data do shaderu pomocí globálních proměnných. Vrchol v clip-\/space by měl být zapsán do proměnné gl\+\_\+\+Position ve výstupní struktuře. \end{DoxyRefDesc}
+ 

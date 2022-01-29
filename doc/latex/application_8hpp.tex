@@ -1,0 +1,56 @@
+\hypertarget{application_8hpp}{}\section{student/application.hpp File Reference}
+\label{application_8hpp}\index{student/application.\+hpp@{student/application.\+hpp}}
+
+
+This file contains application class.  
+
+
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$Basic\+Camera/\+Orbit\+Camera.\+h$>$}\newline
+{\ttfamily \#include $<$Basic\+Camera/\+Perspective\+Camera.\+h$>$}\newline
+{\ttfamily \#include $<$student/gpu.\+hpp$>$}\newline
+{\ttfamily \#include $<$student/window.\+hpp$>$}\newline
+{\ttfamily \#include $<$student/method.\+hpp$>$}\newline
+{\ttfamily \#include $<$student/timer.\+hpp$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classApplication}{Application}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classApplication}{Application} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{application_8hpp_a836867a62b745ce6dad1043f511b010f}{copy\+To\+S\+D\+L\+Surface} (S\+D\+L\+\_\+\+Surface $\ast$surface, uint8\+\_\+t const $\ast$const color, uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em This function swaps color buffer with S\+D\+L\+\_\+\+Surface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains application class. 
+
+\begin{DoxyAuthor}{Author}
+Tomáš Milet, \href{mailto:imilet@fit.vutbr.cz}{\tt imilet@fit.\+vutbr.\+cz} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{application_8hpp_a836867a62b745ce6dad1043f511b010f}\label{application_8hpp_a836867a62b745ce6dad1043f511b010f}} 
+\index{application.\+hpp@{application.\+hpp}!copy\+To\+S\+D\+L\+Surface@{copy\+To\+S\+D\+L\+Surface}}
+\index{copy\+To\+S\+D\+L\+Surface@{copy\+To\+S\+D\+L\+Surface}!application.\+hpp@{application.\+hpp}}
+\subsubsection{\texorpdfstring{copy\+To\+S\+D\+L\+Surface()}{copyToSDLSurface()}}
+{\footnotesize\ttfamily void copy\+To\+S\+D\+L\+Surface (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{surface,  }\item[{uint8\+\_\+t const $\ast$const}]{color,  }\item[{uint32\+\_\+t}]{width,  }\item[{uint32\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+This function swaps color buffer with S\+D\+L\+\_\+\+Surface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em surface} & sdl surface \\
+\hline
+{\em color} & color buffer (R\+G\+B\+A8\+UI) \\
+\hline
+{\em width} & width of color buffer \\
+\hline
+{\em height} & height of color buffer \\
+\hline
+\end{DoxyParams}

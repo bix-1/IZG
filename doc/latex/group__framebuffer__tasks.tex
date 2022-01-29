@@ -1,0 +1,145 @@
+\hypertarget{group__framebuffer__tasks}{}\section{04. Implementace obslužných funkcí pro framebuffer}
+\label{group__framebuffer__tasks}\index{04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__framebuffer__tasks_gab041c171fc07011d13ec608fc94a1d1c}{G\+P\+U\+::create\+Framebuffer} (uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em This function creates framebuffer on \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+void \hyperlink{group__framebuffer__tasks_gaaaa9fbf5f3c28f27f092c2c6883d6e60}{G\+P\+U\+::delete\+Framebuffer} ()
+\begin{DoxyCompactList}\small\item\em This function deletes framebuffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__framebuffer__tasks_ga6391eaf70194c39bf523ddc875ca176d}{G\+P\+U\+::resize\+Framebuffer} (uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em This function resizes framebuffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \hyperlink{group__framebuffer__tasks_ga67504b8136ef6283ad6efbb5323a0ef8}{G\+P\+U\+::get\+Framebuffer\+Color} ()
+\begin{DoxyCompactList}\small\item\em This function returns pointer to color buffer. \end{DoxyCompactList}\item 
+float $\ast$ \hyperlink{group__framebuffer__tasks_gab755d51ff9686df1fb9b2892b9861c1d}{G\+P\+U\+::get\+Framebuffer\+Depth} ()
+\begin{DoxyCompactList}\small\item\em This function returns pointer to depth buffer. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{group__framebuffer__tasks_ga467b565d440e5742b7ebc104a2d70ce3}{G\+P\+U\+::get\+Framebuffer\+Width} ()
+\begin{DoxyCompactList}\small\item\em This function returns width of framebuffer. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{group__framebuffer__tasks_gaa115f7153407b8020fd153b71abccf0e}{G\+P\+U\+::get\+Framebuffer\+Height} ()
+\begin{DoxyCompactList}\small\item\em This function returns height of framebuffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+{\bfseries  Framebuffer } je kus paměti na grafické kartě do kterého se ukládá barva a hloubka fragmentu. Je složen z dvou částí -\/ color buffer, depth buffer. Barevný buffer v tomto projektu je složen z pixelů, které mají 4 kanály reprezentované pomocí uint8\+\_\+t. 0 znamená nejmenší intenzita, 255 znamená maximální intenzita. Hloubkový buffer v tomto projektu je složen z pixelů, které mají 1 kanál reprezentovaný pomocí float. Pořadí a formát pixelů je naznačen na následujícím obrázku\+:
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__framebuffer__tasks_gab041c171fc07011d13ec608fc94a1d1c}\label{group__framebuffer__tasks_gab041c171fc07011d13ec608fc94a1d1c}} 
+\index{04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}!create\+Framebuffer@{create\+Framebuffer}}
+\index{create\+Framebuffer@{create\+Framebuffer}!04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}}
+\subsubsection{\texorpdfstring{create\+Framebuffer()}{createFramebuffer()}}
+{\footnotesize\ttfamily void G\+P\+U\+::create\+Framebuffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{width,  }\item[{uint32\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+This function creates framebuffer on \hyperlink{classGPU}{G\+PU}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width of framebuffer \\
+\hline
+{\em height} & height of framebuffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000028}{Todo}]Tato funkce by měla alokovat framebuffer od daném rozlišení.~\newline
+ Framebuffer se skládá z barevného a hloukového bufferu.~\newline
+ Buffery obsahují width x height pixelů.~\newline
+ Barevný pixel je složen z 4 x uint8\+\_\+t hodnot -\/ to reprezentuje R\+G\+BA barvu.~\newline
+ Hloubkový pixel obsahuje 1 x float -\/ to reprezentuje hloubku.~\newline
+ Nultý pixel framebufferu je vlevo dole.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__framebuffer__tasks_gaaaa9fbf5f3c28f27f092c2c6883d6e60}\label{group__framebuffer__tasks_gaaaa9fbf5f3c28f27f092c2c6883d6e60}} 
+\index{04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}!delete\+Framebuffer@{delete\+Framebuffer}}
+\index{delete\+Framebuffer@{delete\+Framebuffer}!04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}}
+\subsubsection{\texorpdfstring{delete\+Framebuffer()}{deleteFramebuffer()}}
+{\footnotesize\ttfamily void G\+P\+U\+::delete\+Framebuffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function deletes framebuffer. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000029}{Todo}]tato funkce by měla dealokovat framebuffer. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__framebuffer__tasks_ga67504b8136ef6283ad6efbb5323a0ef8}\label{group__framebuffer__tasks_ga67504b8136ef6283ad6efbb5323a0ef8}} 
+\index{04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}!get\+Framebuffer\+Color@{get\+Framebuffer\+Color}}
+\index{get\+Framebuffer\+Color@{get\+Framebuffer\+Color}!04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}}
+\subsubsection{\texorpdfstring{get\+Framebuffer\+Color()}{getFramebufferColor()}}
+{\footnotesize\ttfamily uint8\+\_\+t $\ast$ G\+P\+U\+::get\+Framebuffer\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns pointer to color buffer. 
+
+\begin{DoxyReturn}{Returns}
+pointer to color buffer 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000031}{Todo}]Tato funkce by měla vrátit ukazatel na začátek barevného bufferu.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__framebuffer__tasks_gab755d51ff9686df1fb9b2892b9861c1d}\label{group__framebuffer__tasks_gab755d51ff9686df1fb9b2892b9861c1d}} 
+\index{04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}!get\+Framebuffer\+Depth@{get\+Framebuffer\+Depth}}
+\index{get\+Framebuffer\+Depth@{get\+Framebuffer\+Depth}!04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}}
+\subsubsection{\texorpdfstring{get\+Framebuffer\+Depth()}{getFramebufferDepth()}}
+{\footnotesize\ttfamily float $\ast$ G\+P\+U\+::get\+Framebuffer\+Depth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns pointer to depth buffer. 
+
+\begin{DoxyReturn}{Returns}
+pointer to dept buffer. 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000032}{Todo}]tato funkce by mla vrátit ukazatel na začátek hloubkového bufferu.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__framebuffer__tasks_gaa115f7153407b8020fd153b71abccf0e}\label{group__framebuffer__tasks_gaa115f7153407b8020fd153b71abccf0e}} 
+\index{04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}!get\+Framebuffer\+Height@{get\+Framebuffer\+Height}}
+\index{get\+Framebuffer\+Height@{get\+Framebuffer\+Height}!04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}}
+\subsubsection{\texorpdfstring{get\+Framebuffer\+Height()}{getFramebufferHeight()}}
+{\footnotesize\ttfamily uint32\+\_\+t G\+P\+U\+::get\+Framebuffer\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns height of framebuffer. 
+
+\begin{DoxyReturn}{Returns}
+height of framebuffer 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000034}{Todo}]Tato funkce by měla vrátit výšku framebufferu. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__framebuffer__tasks_ga467b565d440e5742b7ebc104a2d70ce3}\label{group__framebuffer__tasks_ga467b565d440e5742b7ebc104a2d70ce3}} 
+\index{04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}!get\+Framebuffer\+Width@{get\+Framebuffer\+Width}}
+\index{get\+Framebuffer\+Width@{get\+Framebuffer\+Width}!04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}}
+\subsubsection{\texorpdfstring{get\+Framebuffer\+Width()}{getFramebufferWidth()}}
+{\footnotesize\ttfamily uint32\+\_\+t G\+P\+U\+::get\+Framebuffer\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns width of framebuffer. 
+
+\begin{DoxyReturn}{Returns}
+width of framebuffer 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000033}{Todo}]Tato funkce by měla vrátit šířku framebufferu. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__framebuffer__tasks_ga6391eaf70194c39bf523ddc875ca176d}\label{group__framebuffer__tasks_ga6391eaf70194c39bf523ddc875ca176d}} 
+\index{04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}!resize\+Framebuffer@{resize\+Framebuffer}}
+\index{resize\+Framebuffer@{resize\+Framebuffer}!04. Implementace obslužných funkcí pro framebuffer@{04. Implementace obslužných funkcí pro framebuffer}}
+\subsubsection{\texorpdfstring{resize\+Framebuffer()}{resizeFramebuffer()}}
+{\footnotesize\ttfamily void G\+P\+U\+::resize\+Framebuffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{width,  }\item[{uint32\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+This function resizes framebuffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & new width of framebuffer \\
+\hline
+{\em height} & new heght of framebuffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000030}{Todo}]Tato funkce by měla změnit velikost framebuffer. \end{DoxyRefDesc}

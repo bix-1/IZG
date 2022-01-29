@@ -1,0 +1,148 @@
+\hypertarget{index_zadani}{}\section{Zadání projektu do předmětu I\+Z\+G.}\label{index_zadani}
+ Vašim úkolem je naimplementovat jednoduchou grafickou kartu (gpu). Pomocí gpu vizualizovat model králička s phongovým osvělovacím modelem a phongovým stínováním s procedurální texturou. Cílem projektu je naučit vás jak fungují dnešní grafické karty a jak tyto karty ovládat pomocí A\+PI (které je blízké k Open\+GL). Každý úkol má přiřazen akceptační test, takže si můžete snadno ověřit funkčnosti vaší implementace. Dále doporučuji prozkoumání, jak je tento projekt udělán. Můžete se naučit jak udělat C\+Make, jak udělat unit testy, jak psát doxygen. Klidně se mě můžete na tyto věci zeptat. ~\newline
+ Úkol je složen ze dvou částí\+: 
+\begin{DoxyEnumerate}
+\item implementace \hyperlink{classGPU}{G\+PU} 
+\item využití \hyperlink{classGPU}{G\+PU} pro vykreslení otexturovaného králíčka vrámci \hyperlink{classPhongMethod}{Phong\+Method} vykreslovací metody. 
+\end{DoxyEnumerate} ~\newline
+ Všechny úkoly naleznete zde\+: \href{modules.html}{\tt kategorie úkolů} nebo v kompletním výpisu \hyperlink{todo}{todo.\+html}.\hypertarget{index_Overview}{}\subsection{Vytváření objektů na grafické kartě (1a. úkol)}\label{index_Overview}
+V tomto úkolu je potřeba implementovat obslužné funkcé pro objekty na grafické kartě. Stači editovat soubory \hyperlink{gpu_8hpp}{gpu.\+hpp} a \hyperlink{gpu_8cpp}{gpu.\+cpp}. ~\newline
+ ~\newline
+ Grafická karta je složena z paměti a výpočetního / vykreslovacího řetězce (pipeline).  V paměti je uloženo několik informací. Jsou to\+: 
+\begin{DoxyItemize}
+\item Buffery 
+\item Tabulky s nastavením vertex pullerů 
+\item Shader programy a jejich nastavení včetně uniformích proměnných 
+\item Framebuffer 
+\end{DoxyItemize} Ke každému typu objektu se vážou obslužné funkce. Tyto funkce můžou vytvořit nové objekty. Náhrát do nich data. Vyčíst z nich data nebo je smazat. Každý objekt je identifikován pomocí celočíselného identifikátoru \hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID}, \hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}, \hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID}. Objekt který neexistuje má identifikátor \hyperlink{fwd_8hpp_a85f029d54035997f9d5f499008d5f623}{empty\+ID}. Situace je znázorněna na následujícím obrázku\+:
+
+
+
+K těmto 4 objektům se vážou 4 podčásti úkolu\+: 
+\begin{DoxyItemize}
+\item \hyperlink{group__buffer__tasks}{Implementace obslužných funkcí pro buffery} 
+\item \hyperlink{group__vertexpuller__tasks}{Implementace obslužných funkcí pro vertex pullery} 
+\item \hyperlink{group__program__tasks}{Implementace obslužných funkcí pro shader programy} 
+\item \hyperlink{group__framebuffer__tasks}{Implementace obslužných funkcí pro framebuffer} 
+\end{DoxyItemize}
+
+Po implementaci těchto 4 úkolu by mělo být možné na grafické kartě vytvářet objekty a upravovat je. Pro implementaci těchto úkolů můžete vytvářet proměnné uvnitř třídy \hyperlink{classGPU}{G\+PU} a inicializovat je v konstruktoru a deinicializovat je v destruktoru této třídy\+: 
+\begin{DoxyItemize}
+\item \hyperlink{group__gpu__init}{proměnné, inicializace, deinicializace}. 
+\end{DoxyItemize}
+
+Po implementaci obslužných funkcí pro objekty můžete implementovat vykreslovací funkce -\/ funkcionalitu vykreslovacího řetězce. \hypertarget{index_Draw}{}\subsection{Kreslení (1b. úkol)}\label{index_Draw}
+Další úkoly se týkají kreslení. Stejně jako předchozí úkol, je potřeba editovat akorát soubory \hyperlink{gpu_8cpp}{gpu.\+cpp} a \hyperlink{gpu_8hpp}{gpu.\+hpp}. Je nutné naprogramovat 2 kreslící funkce. První pouze vymaže framebuffer \hyperlink{group__draw__tasks_ga012ff10197fb3e5051b854a0028db31d}{G\+P\+U\+::clear}, druhá vyrasterizuje seznam trojúhelníků \hyperlink{group__draw__tasks_ga127436afbcbda852746dfb9dae885ecf}{G\+P\+U\+::draw\+Triangles}. V této části je popsána teorie kreslení na grafických kartách, kterou budete muset zreplikovat v kódě. \hypertarget{index_Pipeline}{}\subsubsection{Pipeline}\label{index_Pipeline}
+Vykreslovací řetězec je zobrazen na následujícím obrázku\+: Všechny části tohoto obrázku je potřeba implementovat vrámci kreslící funkce pro kreslení trojúhelníků, jmenovitě\+: 
+\begin{DoxyEnumerate}
+\item Vertex Puller 
+\item Vertex Processor 
+\item Primitive Assembly 
+\item Clipping 
+\item Perspective Division 
+\item Viewport Transformation 
+\item Rasterization 
+\item Fragment Processor 
+\item Per-\/\+Fragment Operation (Depth test) 
+\end{DoxyEnumerate}\hypertarget{index_VertexPuller}{}\subsubsection{Vertex Puller}\label{index_VertexPuller}
+Detailnější popis, co dělá vertex puller naleznete v úkolu \hyperlink{group__vertexpuller__tasks}{Implementace obslužných funkcí vertex pulleru}. Hlavní účel vertex pulleru je sestavení vrcholů pro vertex procesor. Vertex puller je zařízení, které vyčte data z několik bufferů a staví vrchol (struktura několika vertex atributů). Úživatel grafické karty má možnost měnit nastavení vertex pulleru. Může měnit počet vertex atributů v sestavovaném vrcholu. Může měnit buffery, ze kterých jsou jednotlivé vertex atributy čteny, může měnit způsob čtení (offset a stride (krok)). Toto nastavení je uloženo v tabulce (často se ji říká V\+AO (vertex array object)). Úživatel může na grafické kartě vytvořit několik takovýchto tabulek s nastavením a libovolně mezi nimi přepínat. \hypertarget{index_VertexProcessor}{}\subsubsection{Vertex Processor}\label{index_VertexProcessor}
+Úkolem vertex processoru je transformace vrcholů pomocí transformačních matic. Vertex processor vykonává shader (kus programu), kterému se říká vertex shader. Vstupem vertex shaderu je vrchol \hyperlink{structInVertex}{In\+Vertex}, výstupem je vrchol \hyperlink{structOutVertex}{Out\+Vertex}. Dalším (konstatním) vstupem vertex shaderu jsou uniformní proměnné \hyperlink{structUniforms}{Uniforms}, které jsou uložené v rámci shader programu. Pokud se uživatel rozhodne vykreslit 5 trojúhelníků je vertex shader spuštěn $ 5 \cdot 3 = 15 $. Jednotlivé spuštění (invokace) vertex shaderu vyžadují nové vstupní vrcholy a produkují nové výstupní vrcholy. To ve výsledku znamená, že se pro každou invokaci vertex shaderu spustí vertex puller, který sestaví vstupní vrchol. 
+
+Vertex Shader je v tomto projektu reprezentován jako C++ funkce. Tato funkce má pevný typ \hyperlink{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}{Vertex\+Shader}. Příklad jak může vypadat takový vertex shader můžete najít třeba tady \hyperlink{czFlagMethod_8cpp_a787e2577e9bc9e3a1d683e567222c827}{cz\+Flag\+\_\+\+VS}.\hypertarget{index_PrimitiveAssembly}{}\subsubsection{Primitive Assembly}\label{index_PrimitiveAssembly}
+Primitive Assembly je jednotka která sestavuje trojúhelníky (mimo jiné). Trojúhelníku, úsečce, bodu se hromadně říká primitivum. V tomto projektu se používají pouze trojúhelníky. Primitive Assembly jednotka si počká na 3 po sobě jdoucí \hyperlink{structOutVertex}{výstupní vrcholy} z vertex shaderu a sestaví trojúhelník (struktura která by měla obsahovat 3 výstupní vrcholy). Lze na to také nahlížet tak, že primitiv assembly jednotka dostane příkaz vykreslit třeba 4 trojúhelníky. Jednotka tak spustí vertex shader 12x, který takto spustí 12x vertex puller.
+
+\hypertarget{index_Clipping}{}\subsubsection{Clipping}\label{index_Clipping}
+Ořez (clipping) slouží pro odstranění částí trojúhelníků, které leží mimo pohledový jehlan. Nejdůležitější je však ořet near ořezovou rovinou pohledoveho jehlanu. Pokud by se neprovedl ořez pomocí near roviny, pak by se vrcholy nebo i celé trojúhělníky, které leží za středem projekce promítly při perspektivním dělení na průmětnu. Ořez se provádí v clip-\/space -\/ po pronásobení vrcholů projekční maticí. Pro body, které leží uvnitř pohledového tělesa platí, že jejich souřadnice splňují následující nerovnice\+: $ -A_w \leq A_i \leq +A_w $, $i \in \left\{ x,y,z \right\}$. Těchto 6 nerovnic reprezentuje jednotlivé svěny pohledového jehlanu. Nerovnice $ -A_w \leq A_z $ reprezentuje podmínku pro near ořezovou rovinu. ~\newline
+ Při ořezu trojúhelníku můžou nastat 4 případy, jsou znázorněny na následujícím obrázku\+:
+
+ Ořez trojúhelníku pomocí near roviny lze zjednodušit na ořez hran trojúhelníku. Bod na hraně (úsečce) trojúhelníku lze vyjádřit jako\+: $ \overrightarrow{X(t)} = \overrightarrow{A} + t \cdot (\overrightarrow{B}-\overrightarrow{A}) $, $t \in [0,1] $. $ \overrightarrow{A}, \overrightarrow{B} $ jsou vrcholy trojúhelníka, $ \overrightarrow{X(t)} $ je bod na hraně a parametr $ t $ udává posun na úsečce.
+
+ Souřadnice bodu $ \overrightarrow{X(t)} $ lze určit při vypočtení parametru $ t $, při kterém přestane platit nerovnice pro near rovinu $ -X(t)_w \leq X(t)_z $. Takové místo nastává v situaci $ -X(t)_w = X(t)_z $. Po dosazení z rovnice úsečky lze vztah přepsat na\+: \begin{eqnarray*} -X(t)_w &=& X(t)_z \\ 0 &=& X(t)_w + X(t)_z \\ 0 &=& A_w + t \cdot (B_w-A_w) + A_z + t \cdot (B_z - A_z) \\ 0 &=& A_w + A_z + t \cdot (B_w-A_w+B_z-A_z) \\ -A_w-A_z &=& t \cdot (B_w-A_w+B_z-A_z) \\ \frac{-A_w - A_z}{B_w-A_w+B_z-A_z} &=& t\\ \end{eqnarray*}
+
+Pozice bodu $ \overrightarrow{X(t)} $ a hodnoty dalších vertex atributů lze vypočítat lineární kombinací hodnot z vrcholů úsečky pomocí parametru $ t $ následovně\+: $ \overrightarrow{X(t)} = \overrightarrow{A} + t \cdot (\overrightarrow{B}-\overrightarrow{A}) $.\hypertarget{index_PerspectiveDivision}{}\subsubsection{Perspektivní dělení}\label{index_PerspectiveDivision}
+Perspektivní dělení následuje za clippingem a provádí převod z homogenních souřadnic na kartézské pomocí dělení w. \hypertarget{index_ViewPortTransformation}{}\subsubsection{Viewport transformace}\label{index_ViewPortTransformation}
+Viewport transformace provádí převod N\+DC (rozsah -\/1, +1) na rozlišení okna, aby se mohla provést rasterizace. \hypertarget{index_Rasterization}{}\subsubsection{Rasterizace}\label{index_Rasterization}
+Rasterizace rasterizuje trojúhelník ve screen-\/space. Rasterizace produkuje fragmenty v případě, že {\bfseries střed} pixelu leží uvnitř trojúhelníka. Rasterizace by měla zapsat souřadnice fragmentu do proměnné \hyperlink{structInFragment_ae72e0b96e17181ea2cb2ef256e3f0a8f}{In\+Fragment\+::gl\+\_\+\+Frag\+Coord} ve struktuře \hyperlink{structInFragment}{In\+Fragment}. Pozice fragmentu obsahuje v x,y souřadnici na obrazovce a v z hloubku. ~\newline
+ Další úkol rasterizace je interpolace vertex attributů do fragment attributů. Atributy (a jejich typ) které jsou posílány z vertex shaderu do fragment shaderu si uživatel může zvolit funkcí \hyperlink{group__program__tasks_gaff499d4f692ea0dd7125bfd324957619}{G\+P\+U\+::set\+V\+S2\+F\+S\+Type}. Úkolem rasterizéru je perspektivně korektně interpolovat atributy. Perspektivně korektní interpolace využívá pro interpolaci barycentrické koordináty spočítané z 3D trojúhelníku a ne z 2D trojúhelníku. Interpolaci je možné provést i pomocí 2D barycentrických koordinát při použití perspektivní korekce\+:
+
+\[\displaystyle \frac{\frac{A_0 \cdot \lambda_0}{h_0} + \frac{A_1 \cdot \lambda_1}{h_1} + \frac{A_2 \cdot \lambda_2}{h_2}}{\frac{\lambda_0}{h_0}+\frac{\lambda_1}{h_1}+\frac{\lambda_2}{h_2}}\] Kde $\lambda_0,\lambda_1,\lambda_2$ jsou barycentrické koordináty ve 2D, $h_0,h_1,h_2$ je homogenní složka vrcholů a $A_0,A_1,A_2$ je atribut vrcholu.
+
+ \hypertarget{index_FragmentProcessor}{}\subsubsection{Fragment processor}\label{index_FragmentProcessor}
+Fragment processor spouští fragment shader nad každým fragmentem. Data pro fragment shader jsou uložena ve struktuře \hyperlink{structInFragment}{In\+Fragment}. Výstup fragment shaderu je výstupní fragment \hyperlink{structOutFragment}{Out\+Fragment} -\/ barva. Další (konstantní) vstup fragment shaderu jsou uniformní proměnné. \hypertarget{index_PFO}{}\subsubsection{Per-\/fragment operace}\label{index_PFO}
+Per-\/fragment operace provádí depth test. Ověření zda je nový fragment blíže než hloubka poznačená ve framebufferu. Pokud je hloubka nového fragment menší, barva a hloubka fragmentu je zapsána do framebufferu. Dejte pozor na přetečení rozsahu gl\+\_\+\+Frag\+Color. Před zápisem je nutné ořezat barvu do rozsahu $<$0,1$>$.
+
+\hypertarget{index_PhongMethod}{}\subsection{Implementace vykreslovací metody Phong\+Method (úkol 2.)}\label{index_PhongMethod}
+Druhý úkol je implementace vykreslování králička s phongovým osvětlovacím modelem a phognovým stínováním s procedurální texturou. Úkol je složen ze dvou částí\+: 
+\begin{DoxyItemize}
+\item \hyperlink{group__shader__side}{Implementace vertex a fragment shaderu} 
+\item \hyperlink{group__cpu__side}{Implementace inicializace vykreslování a samotného kreslení} 
+\end{DoxyItemize}Pro implemenatci si můžete inspirovat příklady\+: \hyperlink{triangleMethod_8cpp}{triangle\+Method.\+cpp} \hyperlink{triangle3DMethod_8cpp}{triangle3\+D\+Method.\+cpp}, \hyperlink{triangleBufferMethod_8cpp}{triangle\+Buffer\+Method.\+cpp}, \hyperlink{czFlagMethod_8cpp}{cz\+Flag\+Method.\+cpp}.
+
+
+
+V projektu jsou přítomny i nějaké další příklady. Tyto příklady můžete využít pro inspiraci a návod jak napsat vykreslování a shadery.\hypertarget{index_terminologie}{}\subsection{Terminologie}\label{index_terminologie}
+{\bfseries Vertex} je kolekce několika vertex atributů. Tyto atributy mají svůj typ a počet komponent. Každý vertex atribut má nějaký význam (pozice, hmotnost, texturovací koordináty), které mu přiřadí programátor/modelátor. Z několika vrcholů je složeno primitivum (trojúhelník, úsečka, ...)
+
+{\bfseries Vertex atribut} je jedna vlastnost vrcholu (pozice, normála, texturovací koordináty, hmotnost, ...). Atribut je složen z 1,2,3 nebo 4 komponent daného typu (F\+L\+O\+AT, I\+NT, ...). Sémantika atributu není pevně stanovena (atributy mají pouze pořadové číslo -\/ attrib\+Index) a je na každém programátorovi/modelátorovi, jakou sémantiku atributu přidělí.  {\bfseries Fragment} je kolekce několika atributů (podobně jako Vertex). Tyto atributy mají svůj typ a počet komponent. Fragmenty jsou produkovány resterizací, kde jsou atributy fragmetů vypočítány z vertex atributů pomocí interpolace. Fragment si lze představit jako útržek původního primitiva.
+
+{\bfseries Fragment atribut} je jedna vlastnost fragmentu (podobně jako vertex atribut).
+
+{\bfseries Vertex Processor} (často označován za Vertex Shader) je funkční blok, který je vykonáván nad každým vertexem. Jeho vstup i výstup je Vertex. Výstupní vertex má obvykle jiné vertex atributy než vstupní vertex. Výstupní vertex má vždy atribut -\/ gl\+\_\+\+Position (pozice vertexu v clip-\/space). Vstupní vertex má vždy atribut -\/ gl\+\_\+\+Vertex\+ID (číslo vrcholu, s ohledem na indexování). Vertex Processor se obvykle stará o transformace vrcholů modelu (posuny, rotace, projekce). Jelikož Vertex Processor pracuje po vrcholech, je vhodný pro efekty jako vlnění na vodní hladině, displacement mapping apod. Vertex Processor má informace pouze o jednom vrcholu v daném čase (neví nic o sousednostech vrcholů). Vertex processor je programovatelný.
+
+{\bfseries Fragment Processor} (často označován za Fragment Shader/\+Pixel Shader) je funkční blok, který je vykonáván nad každým fragmentem. Jeho vstup i výstup je Fragment. Výstupní fragment má obykle jiné attributy. Fragment processor je programovatelný.
+
+{\bfseries Shader} je program/funkce, který běží na některé z programovatelných částí zobrazovacího řetezce. Shader má vstupy a výstupy, které se mění s každou jeho invokací. Shader má také vstupy, které zůstávají konstantní a nejsou závislé na číslu invokace shaderu. Shaderů je několik typů, v tomto projektu se používají pouze 2 -\/ vertex shader a fragment shader. V tomto projektu jsou shadery reprezentovány pomocí standardních Cčkovských funkcí.
+
+{\bfseries Vertex Shader} je program, který běží na vertex processoru. Jeho vstupní interface obsahuje\+: vertex, uniformní proměnné a další proměnné (číslo vrcholu gl\+\_\+\+Vertex\+ID, ...). Jeho výstupní inteface je vertex, který vždy obsahuje proměnnou gl\+\_\+\+Position -\/ pozici vertexu v clip-\/space.
+
+{\bfseries Fragment Shader} je program, který běží na fragment processoru. Jeho vstupní interface obsahuje\+: fragment, uniformní proměnné a proměnné (souřadnici fragmentu ve screen-\/space gl\+\_\+\+Frag\+Coord, ...). gl\+\_\+\+Frag\+Coord.\+xy -\/ souřadnice ve screen space gl\+\_\+\+Frag\+Coord.\+z -\/ hloubka Jeho výstupní interface je fragment. V projektu obsahuje atribut gl\+\_\+\+Frag\+Color -\/ pro výstupní barvu.
+
+{\bfseries Buffer} je lineární pole dat ve video paměti na \hyperlink{classGPU}{G\+PU}. Do bufferů se ukládají vertex attributy vextexů modelů nebo indexy na vrcholy pro indexované vykreslování.
+
+{\bfseries Uniformní proměnná} je proměná uložená v konstantní paměti \hyperlink{classGPU}{G\+PU}. Všechny programovatelné bloky zobrazovacího řetězce z nich mohou pouze číst. Jejich hodnota zůstává stejná v průběhu kreslení (nemění se v závislosti na číslu vertexu nebo fragmentu). Jejich hodnodu lze změnit z C\+PU strany pomocí funkcí jako je uniform1f, uniform1i, uniform2f, uniform\+Matrix4fv apod. Uniformní proměnné jsou vhodné například pro uložení transformačních matic nebo uložení času.
+
+{\bfseries Vertex Puller} se stará o přípravů vrcholů. K tomuto účelu má tabulku s nastavením. Vertex puller si můžete představit jako sadu čtecích hlav. Každá čtecí hlava se stará o přípravu jednoho vertex atributu. Mezi nastavení čtecí hlavy patří\+: ukazatel na začátek bufferu, offset a krok. Vertex puller může obsahovat indexování.\hypertarget{index_rozdeleni}{}\section{Rozdělení}\label{index_rozdeleni}
+Projekt je rozdělen do několika podsložek\+:
+
+{\bfseries student/} Tato složka obsahuje soubory, které využijete při implementaci projektu. Složka obsahuje soubory, které budete odevzávat a podpůrné knihovny. Všechny soubory v této složce jsou napsány v jazyce C++ abyste se mohli podívat jak jednotlivé části fungují.
+
+{\bfseries tests/} Tato složka obsahuje akceptační a performanční testy projektu. Akceptační testy jsou napsány s využitím knihovny catch. Testy jsou rozděleny do testovacích případů (T\+E\+S\+T\+\_\+\+C\+A\+SE). Daný T\+E\+S\+T\+\_\+\+C\+A\+SE testuje jednu podčást projektu.
+
+{\bfseries doc/} Tato složka obsahuje doxygen dokumentaci projektu. Můžete ji přegenerovat pomocí příkazu doxygen spuštěného v root adresáři projektu.
+
+{\bfseries images/} Tato složka obsahuje doprovodné obrázky pro dokumentaci v doxygenu. Z pohledu projektu je nezajímavá.
+
+Složka student/ obsahuje soubory, které se vás přímo týkají\+:
+
+\hyperlink{gpu_8hpp}{gpu.\+hpp} a \hyperlink{gpu_8cpp}{gpu.\+cpp} obsahuje deklaraci a definici funkcí grafické karty -\/ tady odvedete nejvíce práce.
+
+\hyperlink{phongMethod_8hpp}{phong\+Method.\+hpp} a \hyperlink{phongMethod_8cpp}{phong\+Method.\+cpp} obsahuje vykresleni králička -\/ toto máte taky naprogramovat.
+
+\hyperlink{fwd_8hpp}{fwd.\+hpp} obsahuje definice typů a konstanty -\/ projděte si.
+
+Projekt je postaven nad filozofií Open\+GL. Spousta funkcí má podobné jméno.\hypertarget{index_sestaveni}{}\section{Sestavení}\label{index_sestaveni}
+Projekt byl testován na Ubuntu 18.\+04, Visual Studio 2017, 2019. Projekt vyžaduje 64 bitové sestavení. Projekt využívá build systém \href{https://cmake.org/}{\tt C\+M\+A\+KE}. C\+Make je program, který na základně konfiguračních souborů \char`\"{}\+C\+Make\+Lists.\+txt\char`\"{} vytvoří \char`\"{}makefile\char`\"{} v daném vývojovém prostředí. Dokáže generovat makefile pro Linux, mingw, solution file pro Microsoft Visual Studio, a další. Postup\+:
+\begin{DoxyEnumerate}
+\item stáhnout projekt
+\item rozbalit projekt
+\item ve složce build spusťte \char`\"{}cmake-\/gui ..\char`\"{} případně \char`\"{}ccmake ..\char`\"{}
+\item vyberte si překladovou platformu (64 bit).
+\item configure
+\item generate
+\item make nebo otevřete vygenerovnou Microsoft Visual Studio Solution soubor.
+\end{DoxyEnumerate}\hypertarget{index_spousteni}{}\section{Spouštění}\label{index_spousteni}
+Projekt je možné po úspěšném přeložení pustit přes aplikaci {\bfseries izg\+Project}. Projekt akceptuje několik argumentů příkazové řádky, pro jejich výpis použijte parametr {\bfseries  -\/h }
+\begin{DoxyItemize}
+\item {\bfseries -\/c ../tests/output.bmp} spustí akceptační testy, soubor odkazuje na obrázek s očekávaným výstupem.
+\item {\bfseries -\/p} spustí performanční test.
+\end{DoxyItemize}\hypertarget{index_ovladani}{}\section{Ovládání}\label{index_ovladani}
+Program se ovládá pomocí myši a klávesnice\+:
+\begin{DoxyItemize}
+\item stisknuté levé tlačítko myši + pohyb myší -\/ rotace kamery
+\item stisknuté pravé tlačítko myši + pohyb myší -\/ přiblížení kamery
+\item \char`\"{}n\char`\"{} -\/ přepne na další scénu/metodu \char`\"{}p\char`\"{} -\/ přepne na předcházející scénu/metodu
+\end{DoxyItemize}\hypertarget{index_odevzdavani}{}\section{Odevzdávání}\label{index_odevzdavani}
+Před odevzdáváním si zkontrolujte, že váš projekt lze přeložit na merlinovi. Zkopirujte projekt na merlin a spusťte skript\+: {\bfseries ./merlin\+Compilation\+Test.sh}. Odevzdávejte pouze soubory \hyperlink{gpu_8hpp}{gpu.\+hpp}, \hyperlink{gpu_8cpp}{gpu.\+cpp}, \hyperlink{phongMethod_8hpp}{phong\+Method.\+hpp} a \hyperlink{phongMethod_8cpp}{phong\+Method.\+cpp} Soubory zabalte do archivu proj.\+zip. Po rozbalení archivu se {\bfseries N\+E\+S\+MÍ} vytvořit žádná složka. Příkazy pro ověření na Linuxu\+: zip proj.\+zip \hyperlink{gpu_8hpp}{gpu.\+hpp} \hyperlink{gpu_8cpp}{gpu.\+cpp} \hyperlink{phongMethod_8cpp}{phong\+Method.\+cpp} \hyperlink{phongMethod_8hpp}{phong\+Method.\+hpp}, unzip proj.\+zip. Studenti pracují na řešení projektu samostatně a každý odevzdá své vlastní řešení. Poraďte si, ale řešení vypracujte samostatně!\hypertarget{index_hodnoceni}{}\section{Hodnocení}\label{index_hodnoceni}
+Množství bodů, které dostanete, je odvozeno od množství splněných akceptačních testů a podle toho, zda vám to kreslí správně (s jistou tolerancí kvůli nepřesnosti floatové aritmetiky). Automatické opravování má k dispozici větší množství akceptačních testů (kdyby někoho napadlo je obejít). Pokud vám aplikace spadne v rámci testů, dostanete 0 bodů. Pokud aplikace nepůjde přeložit, dostanete 0 bodů.\hypertarget{index_soutez}{}\section{Soutěž}\label{index_soutez}
+Pokud váš projekt obdrží plný počet bodů, bude zařazen do soutěže o nejrychlejší implementaci zobrazovacího řetězce. Můžete přeimplementovat cokoliv v odevzdávaných souborech pokud to projde akceptačními testy a kompilací.\hypertarget{index_zaver}{}\section{Závěrem}\label{index_zaver}
+Ať se dílo daří a ať vás grafika alespoň trochu baví! V případě potřeby se nebojte zeptat (na fóru nebo napište přímo vedoucímu projektu \href{mailto:imilet@fit.vutbr.cz}{\tt imilet@fit.\+vutbr.\+cz}). 

@@ -1,0 +1,91 @@
+\hypertarget{classMethod}{}\section{Method Class Reference}
+\label{classMethod}\index{Method@{Method}}
+
+
+This class represents rendering method.  
+
+
+
+
+{\ttfamily \#include $<$method.\+hpp$>$}
+
+Inheritance diagram for Method\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=9.000000cm]{classMethod}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMethod_ab48717dc68d3c057b65574a539a480f7}\label{classMethod_ab48717dc68d3c057b65574a539a480f7}} 
+\hyperlink{classMethod_ab48717dc68d3c057b65574a539a480f7}{Method} ()
+\begin{DoxyCompactList}\small\item\em Constructor of rendering method. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMethod_aa4e3f9623f9a67d2e3b3017fd8aa8264}\label{classMethod_aa4e3f9623f9a67d2e3b3017fd8aa8264}} 
+virtual \hyperlink{classMethod_aa4e3f9623f9a67d2e3b3017fd8aa8264}{$\sim$\+Method} ()
+\begin{DoxyCompactList}\small\item\em Destructor of rendering method. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classMethod_ab07a971e2a1b04a658467c643423c347}{on\+Draw} (glm\+::mat4 const \&proj, glm\+::mat4 const \&view, glm\+::vec3 const \&light, glm\+::vec3 const \&camera)=0
+\begin{DoxyCompactList}\small\item\em This functino is called every frame. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classMethod_a42dbfcfce68e920f7e957f737e93e698}{on\+Update} (float dt)
+\begin{DoxyCompactList}\small\item\em This function is called on update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMethod_a60dbb554906836cd162036be07ab1c87}\label{classMethod_a60dbb554906836cd162036be07ab1c87}} 
+\hyperlink{classGPU}{G\+PU} \hyperlink{classMethod_a60dbb554906836cd162036be07ab1c87}{gpu}
+\begin{DoxyCompactList}\small\item\em graphic card \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents rendering method. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMethod_ab07a971e2a1b04a658467c643423c347}\label{classMethod_ab07a971e2a1b04a658467c643423c347}} 
+\index{Method@{Method}!on\+Draw@{on\+Draw}}
+\index{on\+Draw@{on\+Draw}!Method@{Method}}
+\subsubsection{\texorpdfstring{on\+Draw()}{onDraw()}}
+{\footnotesize\ttfamily virtual void Method\+::on\+Draw (\begin{DoxyParamCaption}\item[{glm\+::mat4 const \&}]{proj,  }\item[{glm\+::mat4 const \&}]{view,  }\item[{glm\+::vec3 const \&}]{light,  }\item[{glm\+::vec3 const \&}]{camera }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+This functino is called every frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em proj} & projection matrix \\
+\hline
+{\em view} & view matrix \\
+\hline
+{\em light} & light position \\
+\hline
+{\em camera} & camera position \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{group__cpu__side_ga100e32901442800e1c155b5ce089f7c5}{Phong\+Method}, \hyperlink{classCZFlagMethod_a72425a172b48b3f730b9b8c7745cc70a}{C\+Z\+Flag\+Method}, \hyperlink{classEmptyMethod_a2f0962a5a3c39614b1112c137b0efd62}{Empty\+Method}, \hyperlink{classTriangle3DMethod_a8e006abc4a38f47bfda0263acfbb7585}{Triangle3\+D\+Method}, \hyperlink{classTriangleBufferMethod_ae4339a5479f2f4fe9ca5964d5f7f1f74}{Triangle\+Buffer\+Method}, \hyperlink{classTriangleClip1Method_a5761d061239fbd8afa2e8c29cc3bef04}{Triangle\+Clip1\+Method}, \hyperlink{classTriangleClip2Method_a8433b228a45401ae637ec6d65a047ea5}{Triangle\+Clip2\+Method}, and \hyperlink{classTriangleMethod_a92fa9c2070469055edee05594a8639c9}{Triangle\+Method}.
+
+\mbox{\Hypertarget{classMethod_a42dbfcfce68e920f7e957f737e93e698}\label{classMethod_a42dbfcfce68e920f7e957f737e93e698}} 
+\index{Method@{Method}!on\+Update@{on\+Update}}
+\index{on\+Update@{on\+Update}!Method@{Method}}
+\subsubsection{\texorpdfstring{on\+Update()}{onUpdate()}}
+{\footnotesize\ttfamily virtual void Method\+::on\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+This function is called on update. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & delta time -\/ time between frames \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classCZFlagMethod_a337cf1158aca2ecf975fee2631071411}{C\+Z\+Flag\+Method}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+student/\hyperlink{method_8hpp}{method.\+hpp}\end{DoxyCompactItemize}

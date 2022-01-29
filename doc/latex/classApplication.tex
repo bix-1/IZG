@@ -1,0 +1,101 @@
+\hypertarget{classApplication}{}\section{Application Class Reference}
+\label{classApplication}\index{Application@{Application}}
+
+
+\hyperlink{classApplication}{Application} class.  
+
+
+
+
+{\ttfamily \#include $<$application.\+hpp$>$}
+
+Inheritance diagram for Application\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classApplication}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classApplication_a00f1777a96159f25075927bbe9076696}{Application} (int32\+\_\+t width, int32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classApplication_a748bca84fefb9c12661cfaa2f623748d}\label{classApplication_a748bca84fefb9c12661cfaa2f623748d}} 
+\hyperlink{classApplication_a748bca84fefb9c12661cfaa2f623748d}{$\sim$\+Application} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename C\+L\+A\+SS $>$ }\\void \hyperlink{classApplication_a1ad1383c43c8d658761249d5a06e3a88}{register\+Method} (std\+::string const \&name)
+\begin{DoxyCompactList}\small\item\em This method registers new rendering method into applicaion. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classApplication_aa38ca47b50935092078cef4281ab66bc}\label{classApplication_aa38ca47b50935092078cef4281ab66bc}} 
+void \hyperlink{classApplication_aa38ca47b50935092078cef4281ab66bc}{start} ()
+\begin{DoxyCompactList}\small\item\em Starts the main loop. \end{DoxyCompactList}\item 
+void \hyperlink{classApplication_a5c018483318ffd6b3121902980e0e122}{set\+Method} (uint32\+\_\+t m)
+\begin{DoxyCompactList}\small\item\em This function selects a rendering method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classApplication}{Application} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classApplication_a00f1777a96159f25075927bbe9076696}\label{classApplication_a00f1777a96159f25075927bbe9076696}} 
+\index{Application@{Application}!Application@{Application}}
+\index{Application@{Application}!Application@{Application}}
+\subsubsection{\texorpdfstring{Application()}{Application()}}
+{\footnotesize\ttfamily Application\+::\+Application (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{width,  }\item[{int32\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width of the window \\
+\hline
+{\em height} & height of the window \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classApplication_a1ad1383c43c8d658761249d5a06e3a88}\label{classApplication_a1ad1383c43c8d658761249d5a06e3a88}} 
+\index{Application@{Application}!register\+Method@{register\+Method}}
+\index{register\+Method@{register\+Method}!Application@{Application}}
+\subsubsection{\texorpdfstring{register\+Method()}{registerMethod()}}
+{\footnotesize\ttfamily template$<$typename C\+L\+A\+SS $>$ \\
+void Application\+::register\+Method (\begin{DoxyParamCaption}\item[{std\+::string const \&}]{name }\end{DoxyParamCaption})}
+
+
+
+This method registers new rendering method into applicaion. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em C\+L\+A\+SS} & method class \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the method \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classApplication_a5c018483318ffd6b3121902980e0e122}\label{classApplication_a5c018483318ffd6b3121902980e0e122}} 
+\index{Application@{Application}!set\+Method@{set\+Method}}
+\index{set\+Method@{set\+Method}!Application@{Application}}
+\subsubsection{\texorpdfstring{set\+Method()}{setMethod()}}
+{\footnotesize\ttfamily void Application\+::set\+Method (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{m }\end{DoxyParamCaption})}
+
+
+
+This function selects a rendering method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & method id \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+student/\hyperlink{application_8hpp}{application.\+hpp}\item 
+student/\hyperlink{application_8cpp}{application.\+cpp}\end{DoxyCompactItemize}

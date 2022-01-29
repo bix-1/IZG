@@ -1,0 +1,95 @@
+\hypertarget{classGPU}{}\section{G\+PU Class Reference}
+\label{classGPU}\index{G\+PU@{G\+PU}}
+
+
+This class represent software \hyperlink{classGPU}{G\+PU}.  
+
+
+
+
+{\ttfamily \#include $<$gpu.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__gpu__init_ga2ca7973e32f63ba3472166a007419a75}{G\+PU} ()
+\begin{DoxyCompactList}\small\item\em Constructor of \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+virtual \hyperlink{group__gpu__init_gac4d153a08d3b9f40e5a8f1634f4a9e78}{$\sim$\+G\+PU} ()
+\begin{DoxyCompactList}\small\item\em Destructor of \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} \hyperlink{group__buffer__tasks_ga309724692e0d90a686642379f12d8d44}{create\+Buffer} (uint64\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em This function allocates buffer on \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+void \hyperlink{group__buffer__tasks_ga05fb19b7c8b51a92162517aa7f25a166}{delete\+Buffer} (\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer)
+\begin{DoxyCompactList}\small\item\em This function frees allocated buffer on \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+void \hyperlink{group__buffer__tasks_ga97e1e76065fd913d6624b4c03164dcec}{set\+Buffer\+Data} (\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer, uint64\+\_\+t offset, uint64\+\_\+t size, void const $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function uploads data to selected buffer on the \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+void \hyperlink{group__buffer__tasks_ga7b89dbe4afbfec3725c64000b37445af}{get\+Buffer\+Data} (\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer, uint64\+\_\+t offset, uint64\+\_\+t size, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function downloads data from \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+bool \hyperlink{group__buffer__tasks_gae725a1955d617a7e655ab751c6e05e97}{is\+Buffer} (\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer)
+\begin{DoxyCompactList}\small\item\em This function tests if buffer exists. \end{DoxyCompactList}\item 
+\hyperlink{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}{Object\+ID} \hyperlink{group__vertexpuller__tasks_gaabe965c10fea7cd8f8af3aa528915c92}{create\+Vertex\+Puller} ()
+\begin{DoxyCompactList}\small\item\em This function creates new vertex puller settings on the \hyperlink{classGPU}{G\+PU},. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gadf91a9fec77d8d23f093458b36a733fc}{delete\+Vertex\+Puller} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao)
+\begin{DoxyCompactList}\small\item\em This function deletes vertex puller settings. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gae9ffbcfa3b43ac9b3ea53e5bc44f83cc}{set\+Vertex\+Puller\+Head} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao, uint32\+\_\+t head, \hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type} type, uint64\+\_\+t stride, uint64\+\_\+t offset, \hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer)
+\begin{DoxyCompactList}\small\item\em This function sets one vertex puller reading head. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gae5238dbc60eb2ece94df110945a4f46b}{set\+Vertex\+Puller\+Indexing} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao, \hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839}{Index\+Type} type, \hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer)
+\begin{DoxyCompactList}\small\item\em This function sets vertex puller indexing. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_ga61384d99754bda4d91790c49b1639b30}{enable\+Vertex\+Puller\+Head} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao, uint32\+\_\+t head)
+\begin{DoxyCompactList}\small\item\em This function enables vertex puller\textquotesingle{}s head. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gae95cab56d80cb888e71b25965dc868c5}{disable\+Vertex\+Puller\+Head} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao, uint32\+\_\+t head)
+\begin{DoxyCompactList}\small\item\em This function disables vertex puller\textquotesingle{}s head. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gac7f9799e1a6a3b1cafb5f4c4c5e9555d}{bind\+Vertex\+Puller} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao)
+\begin{DoxyCompactList}\small\item\em This function selects active vertex puller. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gafdfb7e3cd24d595af6650b68ba9f6f24}{unbind\+Vertex\+Puller} ()
+\begin{DoxyCompactList}\small\item\em This function deactivates vertex puller. \end{DoxyCompactList}\item 
+bool \hyperlink{group__vertexpuller__tasks_ga09408b5ca4250292217f3330ae674319}{is\+Vertex\+Puller} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao)
+\begin{DoxyCompactList}\small\item\em This function tests if vertex puller exists. \end{DoxyCompactList}\item 
+\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} \hyperlink{group__program__tasks_gae1368a616ba5be607b9cf4dd1e60dfe0}{create\+Program} ()
+\begin{DoxyCompactList}\small\item\em This function creates new shader program. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_ga3f8363f9c27c3f900f258e6acee52683}{delete\+Program} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg)
+\begin{DoxyCompactList}\small\item\em This function deletes shader program. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gafe72b55028369d1e9e9f8d087c76af09}{attach\+Shaders} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, \hyperlink{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}{Vertex\+Shader} vs, \hyperlink{fwd_8hpp_a52f1704ae0b129e49fe1902e05319ad6}{Fragment\+Shader} fs)
+\begin{DoxyCompactList}\small\item\em This function attaches vertex and frament shader to shader program. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gaff499d4f692ea0dd7125bfd324957619}{set\+V\+S2\+F\+S\+Type} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t attrib, \hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type} type)
+\begin{DoxyCompactList}\small\item\em This function selects which vertex attributes should be interpolated during rasterization into fragment attributes. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_ga4f2bd468b0ef5fed61ffa34314319a20}{use\+Program} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg)
+\begin{DoxyCompactList}\small\item\em This function actives selected shader program. \end{DoxyCompactList}\item 
+bool \hyperlink{group__program__tasks_ga481c0eb5be3150af401a58fa167506e0}{is\+Program} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg)
+\begin{DoxyCompactList}\small\item\em This function tests if selected shader program exists. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gaa9e9717db5520e6c34a1b380d6321758}{program\+Uniform1f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, float const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (1 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gac34e13783980686c497adda156923b1d}{program\+Uniform2f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, glm\+::vec2 const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (2 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_ga06b1aca1375a9cfff13d3b66defe485f}{program\+Uniform3f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, glm\+::vec3 const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (3 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gad703e87e1652a78261739c6b5108c852}{program\+Uniform4f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, glm\+::vec4 const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (4 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gac3b490a674226c0510ac3c0b784010fa}{program\+Uniform\+Matrix4f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, glm\+::mat4 const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (4 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__framebuffer__tasks_gab041c171fc07011d13ec608fc94a1d1c}{create\+Framebuffer} (uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em This function creates framebuffer on \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+void \hyperlink{group__framebuffer__tasks_gaaaa9fbf5f3c28f27f092c2c6883d6e60}{delete\+Framebuffer} ()
+\begin{DoxyCompactList}\small\item\em This function deletes framebuffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__framebuffer__tasks_ga6391eaf70194c39bf523ddc875ca176d}{resize\+Framebuffer} (uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em This function resizes framebuffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \hyperlink{group__framebuffer__tasks_ga67504b8136ef6283ad6efbb5323a0ef8}{get\+Framebuffer\+Color} ()
+\begin{DoxyCompactList}\small\item\em This function returns pointer to color buffer. \end{DoxyCompactList}\item 
+float $\ast$ \hyperlink{group__framebuffer__tasks_gab755d51ff9686df1fb9b2892b9861c1d}{get\+Framebuffer\+Depth} ()
+\begin{DoxyCompactList}\small\item\em This function returns pointer to depth buffer. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{group__framebuffer__tasks_ga467b565d440e5742b7ebc104a2d70ce3}{get\+Framebuffer\+Width} ()
+\begin{DoxyCompactList}\small\item\em This function returns width of framebuffer. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{group__framebuffer__tasks_gaa115f7153407b8020fd153b71abccf0e}{get\+Framebuffer\+Height} ()
+\begin{DoxyCompactList}\small\item\em This function returns height of framebuffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__draw__tasks_ga012ff10197fb3e5051b854a0028db31d}{clear} (float r, float g, float b, float a)
+\begin{DoxyCompactList}\small\item\em This functino clears framebuffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__draw__tasks_ga127436afbcbda852746dfb9dae885ecf}{draw\+Triangles} (uint32\+\_\+t nof\+Vertices)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represent software \hyperlink{classGPU}{G\+PU}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+student/\hyperlink{gpu_8hpp}{gpu.\+hpp}\item 
+student/\hyperlink{gpu_8cpp}{gpu.\+cpp}\end{DoxyCompactItemize}

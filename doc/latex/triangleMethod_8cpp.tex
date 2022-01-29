@@ -1,0 +1,64 @@
+\hypertarget{triangleMethod_8cpp}{}\section{student/triangle\+Method.cpp File Reference}
+\label{triangleMethod_8cpp}\index{student/triangle\+Method.\+cpp@{student/triangle\+Method.\+cpp}}
+
+
+This file contains implementation of 2D triangle rendering method.  
+
+
+{\ttfamily \#include $<$student/triangle\+Method.\+hpp$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{triangleMethod_8cpp_a3a9b89fdbdda9a3fc3ac396044770160}{triangle\+\_\+\+VS} (\hyperlink{structOutVertex}{Out\+Vertex} \&out\+Vertex, \hyperlink{structInVertex}{In\+Vertex} const \&in\+Vertex, \hyperlink{structUniforms}{Uniforms} const \&uniforms)
+\begin{DoxyCompactList}\small\item\em Vertex shader. \end{DoxyCompactList}\item 
+void \hyperlink{triangleMethod_8cpp_a715bfd2a6da93019a02bc740508b4236}{triangle\+\_\+\+FS} (\hyperlink{structOutFragment}{Out\+Fragment} \&out\+Fragment, \hyperlink{structInFragment}{In\+Fragment} const \&in\+Fragment, \hyperlink{structUniforms}{Uniforms} const \&uniforms)
+\begin{DoxyCompactList}\small\item\em Fragment shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains implementation of 2D triangle rendering method. 
+
+\begin{DoxyAuthor}{Author}
+Tomáš Milet, \href{mailto:imilet@fit.vutbr.cz}{\tt imilet@fit.\+vutbr.\+cz} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{triangleMethod_8cpp_a715bfd2a6da93019a02bc740508b4236}\label{triangleMethod_8cpp_a715bfd2a6da93019a02bc740508b4236}} 
+\index{triangle\+Method.\+cpp@{triangle\+Method.\+cpp}!triangle\+\_\+\+FS@{triangle\+\_\+\+FS}}
+\index{triangle\+\_\+\+FS@{triangle\+\_\+\+FS}!triangle\+Method.\+cpp@{triangle\+Method.\+cpp}}
+\subsubsection{\texorpdfstring{triangle\+\_\+\+F\+S()}{triangle\_FS()}}
+{\footnotesize\ttfamily void triangle\+\_\+\+FS (\begin{DoxyParamCaption}\item[{\hyperlink{structOutFragment}{Out\+Fragment} \&}]{out\+Fragment,  }\item[{\hyperlink{structInFragment}{In\+Fragment} const \&}]{in\+Fragment,  }\item[{\hyperlink{structUniforms}{Uniforms} const \&}]{uniforms }\end{DoxyParamCaption})}
+
+
+
+Fragment shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Fragment} & output fragment \\
+\hline
+{\em in\+Fragment} & input fragment \\
+\hline
+{\em uniforms} & uniform variables \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{triangleMethod_8cpp_a3a9b89fdbdda9a3fc3ac396044770160}\label{triangleMethod_8cpp_a3a9b89fdbdda9a3fc3ac396044770160}} 
+\index{triangle\+Method.\+cpp@{triangle\+Method.\+cpp}!triangle\+\_\+\+VS@{triangle\+\_\+\+VS}}
+\index{triangle\+\_\+\+VS@{triangle\+\_\+\+VS}!triangle\+Method.\+cpp@{triangle\+Method.\+cpp}}
+\subsubsection{\texorpdfstring{triangle\+\_\+\+V\+S()}{triangle\_VS()}}
+{\footnotesize\ttfamily void triangle\+\_\+\+VS (\begin{DoxyParamCaption}\item[{\hyperlink{structOutVertex}{Out\+Vertex} \&}]{out\+Vertex,  }\item[{\hyperlink{structInVertex}{In\+Vertex} const \&}]{in\+Vertex,  }\item[{\hyperlink{structUniforms}{Uniforms} const \&}]{uniforms }\end{DoxyParamCaption})}
+
+
+
+Vertex shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Vertex} & output vertex \\
+\hline
+{\em in\+Vertex} & input vertex \\
+\hline
+{\em uniforms} & uniform variables \\
+\hline
+\end{DoxyParams}

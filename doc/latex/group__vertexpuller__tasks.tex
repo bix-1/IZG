@@ -1,0 +1,223 @@
+\hypertarget{group__vertexpuller__tasks}{}\section{02. Implementace obslužných funkcí pro vertex puller}
+\label{group__vertexpuller__tasks}\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}{Object\+ID} \hyperlink{group__vertexpuller__tasks_gaabe965c10fea7cd8f8af3aa528915c92}{G\+P\+U\+::create\+Vertex\+Puller} ()
+\begin{DoxyCompactList}\small\item\em This function creates new vertex puller settings on the \hyperlink{classGPU}{G\+PU},. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gadf91a9fec77d8d23f093458b36a733fc}{G\+P\+U\+::delete\+Vertex\+Puller} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao)
+\begin{DoxyCompactList}\small\item\em This function deletes vertex puller settings. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gae9ffbcfa3b43ac9b3ea53e5bc44f83cc}{G\+P\+U\+::set\+Vertex\+Puller\+Head} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao, uint32\+\_\+t head, \hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type} type, uint64\+\_\+t stride, uint64\+\_\+t offset, \hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer)
+\begin{DoxyCompactList}\small\item\em This function sets one vertex puller reading head. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gae5238dbc60eb2ece94df110945a4f46b}{G\+P\+U\+::set\+Vertex\+Puller\+Indexing} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao, \hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839}{Index\+Type} type, \hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer)
+\begin{DoxyCompactList}\small\item\em This function sets vertex puller indexing. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_ga61384d99754bda4d91790c49b1639b30}{G\+P\+U\+::enable\+Vertex\+Puller\+Head} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao, uint32\+\_\+t head)
+\begin{DoxyCompactList}\small\item\em This function enables vertex puller\textquotesingle{}s head. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gae95cab56d80cb888e71b25965dc868c5}{G\+P\+U\+::disable\+Vertex\+Puller\+Head} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao, uint32\+\_\+t head)
+\begin{DoxyCompactList}\small\item\em This function disables vertex puller\textquotesingle{}s head. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gac7f9799e1a6a3b1cafb5f4c4c5e9555d}{G\+P\+U\+::bind\+Vertex\+Puller} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao)
+\begin{DoxyCompactList}\small\item\em This function selects active vertex puller. \end{DoxyCompactList}\item 
+void \hyperlink{group__vertexpuller__tasks_gafdfb7e3cd24d595af6650b68ba9f6f24}{G\+P\+U\+::unbind\+Vertex\+Puller} ()
+\begin{DoxyCompactList}\small\item\em This function deactivates vertex puller. \end{DoxyCompactList}\item 
+bool \hyperlink{group__vertexpuller__tasks_ga09408b5ca4250292217f3330ae674319}{G\+P\+U\+::is\+Vertex\+Puller} (\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} vao)
+\begin{DoxyCompactList}\small\item\em This function tests if vertex puller exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+{\bfseries Vertex Puller} je zařízení na grafické kartě, které se stará o sestavení vrcholů. Vrchol (\hyperlink{structInVertex}{In\+Vertex}) je složen z \hyperlink{fwd_8hpp_a176b31bcc8f8b93ee7ef0810ea77730b}{max\+Attributes} vertex attributů, každý může být různého typu (\hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type} (float, vec2, vec3, vec4), a čísla vrcholu. Vertex puller je složen z \hyperlink{fwd_8hpp_a176b31bcc8f8b93ee7ef0810ea77730b}{max\+Attributes} čtecích hlav, které sestavují jednotlivé vertex attributy. Dalším úkolem vertex pulleru je spočítat číslo vrcholů \hyperlink{structInVertex_aa4d31911053492bffe4b41dae12ee000}{In\+Vertex\+::gl\+\_\+\+Vertex\+ID}. ~\newline
+ Číslo vrcholu je dáno pořadovým číslem vyvolání (invokací) vertex shaderu -\/ to v případě že není použito indexování. Jinak je číslo dáno indexem v indexačnímu bufferu. Indexační buffer může mít růzou velikost indexu -\/ 8bit, 16bit a 32bit (\hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839}{Index\+Type}). Pokud je zapnuto indexování, pak je číslo vrcholu dáno položkou v indexačním bufferu, kde položka (index) v bufferu je vybráno na základě čísla invokace vertex shaderu. Dalším úkolem vertex pulleru je připravit aributy vrcholu, který vstupuje do vertex shaderu \hyperlink{structInVertex}{In\+Vertex}. \hyperlink{structInVertex}{In\+Vertex} je složen z \hyperlink{fwd_8hpp_a176b31bcc8f8b93ee7ef0810ea77730b}{max\+Attributes} atributů, každý odpovídá jedné čtecí hlavě z vertex pulleru. Čtecí hlava obsahuje nastavení -\/ offset, stride, size a buffer id. Pokud je čtecí hlava povolena, měla by zkopírovat data (o velikosti vertex atributu) z bufferu od daného offsetu, s krokem stride. Všechny velikosti jsou v bajtech. Krok se použije při čtení různých vrcholů\+: atributy by měly být čteny z adresy\+: buf\+\_\+ptr + offset + stride$\ast$gl\+\_\+\+Vertex\+ID ~\newline
+  Na dalších dvou obrázcích je příklad stavu vertex pulleru ve dvou (0. a 1.) invokaci vertex shaderu.  {\bfseries Indexované kreslení} je způsob snížení redundance dat s využitím indexů na vrcholy. U neindexovaného kreslení je číslo vrcholu \hyperlink{structInVertex_aa4d31911053492bffe4b41dae12ee000}{In\+Vertex\+::gl\+\_\+\+Vertex\+ID} rovno číslu invokace vertex shaderu. U indexovaného kreslení je číslo vrcholu \hyperlink{structInVertex_aa4d31911053492bffe4b41dae12ee000}{In\+Vertex\+::gl\+\_\+\+Vertex\+ID} rovno hodnodě z indexačního bufferu. Hodnota z indexačního bufferu je vybrána číslem invokace vertex shaderu.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__vertexpuller__tasks_gac7f9799e1a6a3b1cafb5f4c4c5e9555d}\label{group__vertexpuller__tasks_gac7f9799e1a6a3b1cafb5f4c4c5e9555d}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!bind\+Vertex\+Puller@{bind\+Vertex\+Puller}}
+\index{bind\+Vertex\+Puller@{bind\+Vertex\+Puller}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{bind\+Vertex\+Puller()}{bindVertexPuller()}}
+{\footnotesize\ttfamily void G\+P\+U\+::bind\+Vertex\+Puller (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID}}]{vao }\end{DoxyParamCaption})}
+
+
+
+This function selects active vertex puller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vao} & id of vertex puller \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000014}{Todo}]Tato funkce aktivuje nastavení vertex pulleru.~\newline
+ Pokud je daný vertex puller aktivován, atributy z bufferů jsou vybírány na základě jeho nastavení.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__vertexpuller__tasks_gaabe965c10fea7cd8f8af3aa528915c92}\label{group__vertexpuller__tasks_gaabe965c10fea7cd8f8af3aa528915c92}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!create\+Vertex\+Puller@{create\+Vertex\+Puller}}
+\index{create\+Vertex\+Puller@{create\+Vertex\+Puller}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{create\+Vertex\+Puller()}{createVertexPuller()}}
+{\footnotesize\ttfamily \hyperlink{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}{Object\+ID} G\+P\+U\+::create\+Vertex\+Puller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function creates new vertex puller settings on the \hyperlink{classGPU}{G\+PU},. 
+
+\begin{DoxyReturn}{Returns}
+unique vertex puller identificator 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000008}{Todo}]Tato funkce vytvoří novou práznou tabulku s nastavením pro vertex puller.~\newline
+ Funkce by měla vrátit identifikátor nové tabulky. Prázdná tabulka s nastavením neobsahuje indexování a všechny čtecí hlavy jsou vypnuté. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__vertexpuller__tasks_gadf91a9fec77d8d23f093458b36a733fc}\label{group__vertexpuller__tasks_gadf91a9fec77d8d23f093458b36a733fc}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!delete\+Vertex\+Puller@{delete\+Vertex\+Puller}}
+\index{delete\+Vertex\+Puller@{delete\+Vertex\+Puller}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{delete\+Vertex\+Puller()}{deleteVertexPuller()}}
+{\footnotesize\ttfamily void G\+P\+U\+::delete\+Vertex\+Puller (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID}}]{vao }\end{DoxyParamCaption})}
+
+
+
+This function deletes vertex puller settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vao} & vertex puller identificator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000009}{Todo}]Tato funkce by měla odstranit tabulku s nastavení pro vertex puller.~\newline
+ Parameter \char`\"{}vao\char`\"{} obsahuje identifikátor tabulky s nastavením.~\newline
+ Po uvolnění nastavení je identifiktátor volný a může být znovu použit.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__vertexpuller__tasks_gae95cab56d80cb888e71b25965dc868c5}\label{group__vertexpuller__tasks_gae95cab56d80cb888e71b25965dc868c5}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!disable\+Vertex\+Puller\+Head@{disable\+Vertex\+Puller\+Head}}
+\index{disable\+Vertex\+Puller\+Head@{disable\+Vertex\+Puller\+Head}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{disable\+Vertex\+Puller\+Head()}{disableVertexPullerHead()}}
+{\footnotesize\ttfamily void G\+P\+U\+::disable\+Vertex\+Puller\+Head (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID}}]{vao,  }\item[{uint32\+\_\+t}]{head }\end{DoxyParamCaption})}
+
+
+
+This function disables vertex puller\textquotesingle{}s head. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vao} & vertex puller id \\
+\hline
+{\em head} & head id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000013}{Todo}]Tato funkce zakáže čtecí hlavu daného vertex pulleru.~\newline
+ Pokud je čtecí hlava zakázána, hodnoty z bufferu se nebudou kopírovat do atributu vrcholu.~\newline
+ Parametry \char`\"{}vao\char`\"{} a \char`\"{}head\char`\"{} vybírají vertex puller a čtecí hlavu.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__vertexpuller__tasks_ga61384d99754bda4d91790c49b1639b30}\label{group__vertexpuller__tasks_ga61384d99754bda4d91790c49b1639b30}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!enable\+Vertex\+Puller\+Head@{enable\+Vertex\+Puller\+Head}}
+\index{enable\+Vertex\+Puller\+Head@{enable\+Vertex\+Puller\+Head}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{enable\+Vertex\+Puller\+Head()}{enableVertexPullerHead()}}
+{\footnotesize\ttfamily void G\+P\+U\+::enable\+Vertex\+Puller\+Head (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID}}]{vao,  }\item[{uint32\+\_\+t}]{head }\end{DoxyParamCaption})}
+
+
+
+This function enables vertex puller\textquotesingle{}s head. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vao} & vertex puller \\
+\hline
+{\em head} & head id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000012}{Todo}]Tato funkce povolí čtecí hlavu daného vertex pulleru.~\newline
+ Pokud je čtecí hlava povolena, hodnoty z bufferu se budou kopírovat do atributu vrcholů vertex shaderu.~\newline
+ Parametr \char`\"{}vao\char`\"{} volí tabulku s nastavením vertex pulleru (vybírá vertex puller).~\newline
+ Parametr \char`\"{}head\char`\"{} volí čtecí hlavu.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__vertexpuller__tasks_ga09408b5ca4250292217f3330ae674319}\label{group__vertexpuller__tasks_ga09408b5ca4250292217f3330ae674319}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!is\+Vertex\+Puller@{is\+Vertex\+Puller}}
+\index{is\+Vertex\+Puller@{is\+Vertex\+Puller}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{is\+Vertex\+Puller()}{isVertexPuller()}}
+{\footnotesize\ttfamily bool G\+P\+U\+::is\+Vertex\+Puller (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID}}]{vao }\end{DoxyParamCaption})}
+
+
+
+This function tests if vertex puller exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vao} & vertex puller\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if vertex puller \char`\"{}vao\char`\"{} exists 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000016}{Todo}]Tato funkce otestuje, zda daný vertex puller existuje. Pokud ano, funkce vrací true. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__vertexpuller__tasks_gae9ffbcfa3b43ac9b3ea53e5bc44f83cc}\label{group__vertexpuller__tasks_gae9ffbcfa3b43ac9b3ea53e5bc44f83cc}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!set\+Vertex\+Puller\+Head@{set\+Vertex\+Puller\+Head}}
+\index{set\+Vertex\+Puller\+Head@{set\+Vertex\+Puller\+Head}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{set\+Vertex\+Puller\+Head()}{setVertexPullerHead()}}
+{\footnotesize\ttfamily void G\+P\+U\+::set\+Vertex\+Puller\+Head (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID}}]{vao,  }\item[{uint32\+\_\+t}]{head,  }\item[{\hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type}}]{type,  }\item[{uint64\+\_\+t}]{stride,  }\item[{uint64\+\_\+t}]{offset,  }\item[{\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID}}]{buffer }\end{DoxyParamCaption})}
+
+
+
+This function sets one vertex puller reading head. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vao} & identificator of vertex puller \\
+\hline
+{\em head} & id of vertex puller head \\
+\hline
+{\em type} & type of attribute \\
+\hline
+{\em stride} & stride in bytes \\
+\hline
+{\em offset} & offset in bytes \\
+\hline
+{\em buffer} & id of buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000010}{Todo}]Tato funkce nastaví jednu čtecí hlavu vertex pulleru.~\newline
+ Parametr \char`\"{}vao\char`\"{} vybírá tabulku s nastavením.~\newline
+ Parametr \char`\"{}head\char`\"{} vybírá čtecí hlavu vybraného vertex pulleru.~\newline
+ Parametr \char`\"{}type\char`\"{} nastaví typ atributu, který čtecí hlava čte. Tímto se vybere kolik dat v bajtech se přečte.~\newline
+ Parametr \char`\"{}stride\char`\"{} nastaví krok čtecí hlavy.~\newline
+ Parametr \char`\"{}offset\char`\"{} nastaví počáteční pozici čtecí hlavy.~\newline
+ Parametr \char`\"{}buffer\char`\"{} vybere buffer, ze kterého bude čtecí hlava číst.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__vertexpuller__tasks_gae5238dbc60eb2ece94df110945a4f46b}\label{group__vertexpuller__tasks_gae5238dbc60eb2ece94df110945a4f46b}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!set\+Vertex\+Puller\+Indexing@{set\+Vertex\+Puller\+Indexing}}
+\index{set\+Vertex\+Puller\+Indexing@{set\+Vertex\+Puller\+Indexing}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{set\+Vertex\+Puller\+Indexing()}{setVertexPullerIndexing()}}
+{\footnotesize\ttfamily void G\+P\+U\+::set\+Vertex\+Puller\+Indexing (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID}}]{vao,  }\item[{\hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839}{Index\+Type}}]{type,  }\item[{\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID}}]{buffer }\end{DoxyParamCaption})}
+
+
+
+This function sets vertex puller indexing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vao} & vertex puller id \\
+\hline
+{\em type} & type of index \\
+\hline
+{\em buffer} & buffer with indices \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000011}{Todo}]Tato funkce nastaví indexování vertex pulleru. Parametr \char`\"{}vao\char`\"{} vybírá tabulku s nastavením.~\newline
+ Parametr \char`\"{}type\char`\"{} volí typ indexu, který je uložený v bufferu.~\newline
+ Parametr \char`\"{}buffer\char`\"{} volí buffer, ve kterém jsou uloženy indexy.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__vertexpuller__tasks_gafdfb7e3cd24d595af6650b68ba9f6f24}\label{group__vertexpuller__tasks_gafdfb7e3cd24d595af6650b68ba9f6f24}} 
+\index{02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}!unbind\+Vertex\+Puller@{unbind\+Vertex\+Puller}}
+\index{unbind\+Vertex\+Puller@{unbind\+Vertex\+Puller}!02. Implementace obslužných funkcí pro vertex puller@{02. Implementace obslužných funkcí pro vertex puller}}
+\subsubsection{\texorpdfstring{unbind\+Vertex\+Puller()}{unbindVertexPuller()}}
+{\footnotesize\ttfamily void G\+P\+U\+::unbind\+Vertex\+Puller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function deactivates vertex puller. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000015}{Todo}]Tato funkce deaktivuje vertex puller. To většinou znamená, že se vybere neexistující \char`\"{}empty\+I\+D\char`\"{} vertex puller. \end{DoxyRefDesc}

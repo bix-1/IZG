@@ -1,0 +1,272 @@
+\hypertarget{group__program__tasks}{}\section{03. Implementace obslužných funkcí pro shader programy}
+\label{group__program__tasks}\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} \hyperlink{group__program__tasks_gae1368a616ba5be607b9cf4dd1e60dfe0}{G\+P\+U\+::create\+Program} ()
+\begin{DoxyCompactList}\small\item\em This function creates new shader program. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_ga3f8363f9c27c3f900f258e6acee52683}{G\+P\+U\+::delete\+Program} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg)
+\begin{DoxyCompactList}\small\item\em This function deletes shader program. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gafe72b55028369d1e9e9f8d087c76af09}{G\+P\+U\+::attach\+Shaders} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, \hyperlink{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}{Vertex\+Shader} vs, \hyperlink{fwd_8hpp_a52f1704ae0b129e49fe1902e05319ad6}{Fragment\+Shader} fs)
+\begin{DoxyCompactList}\small\item\em This function attaches vertex and frament shader to shader program. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gaff499d4f692ea0dd7125bfd324957619}{G\+P\+U\+::set\+V\+S2\+F\+S\+Type} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t attrib, \hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type} type)
+\begin{DoxyCompactList}\small\item\em This function selects which vertex attributes should be interpolated during rasterization into fragment attributes. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_ga4f2bd468b0ef5fed61ffa34314319a20}{G\+P\+U\+::use\+Program} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg)
+\begin{DoxyCompactList}\small\item\em This function actives selected shader program. \end{DoxyCompactList}\item 
+bool \hyperlink{group__program__tasks_ga481c0eb5be3150af401a58fa167506e0}{G\+P\+U\+::is\+Program} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg)
+\begin{DoxyCompactList}\small\item\em This function tests if selected shader program exists. \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gaa9e9717db5520e6c34a1b380d6321758}{G\+P\+U\+::program\+Uniform1f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, float const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (1 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gac34e13783980686c497adda156923b1d}{G\+P\+U\+::program\+Uniform2f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, glm\+::vec2 const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (2 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_ga06b1aca1375a9cfff13d3b66defe485f}{G\+P\+U\+::program\+Uniform3f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, glm\+::vec3 const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (3 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gad703e87e1652a78261739c6b5108c852}{G\+P\+U\+::program\+Uniform4f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, glm\+::vec4 const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (4 float). \end{DoxyCompactList}\item 
+void \hyperlink{group__program__tasks_gac3b490a674226c0510ac3c0b784010fa}{G\+P\+U\+::program\+Uniform\+Matrix4f} (\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} prg, uint32\+\_\+t uniform\+Id, glm\+::mat4 const \&d)
+\begin{DoxyCompactList}\small\item\em This function sets uniform value (4 float). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+{\bfseries Shader Program} je kolekce shaderů, které běží na programovatelných částech zobrazovacího řetězce. Obsahuje vždy maximálně jeden shader daného typu. V tompto projektu je program reprezentován pomocí dvou ukazatelů na funkce \hyperlink{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}{Vertex\+Shader} a \hyperlink{fwd_8hpp_a52f1704ae0b129e49fe1902e05319ad6}{Fragment\+Shader}. K danému programuje je ještě obvykle připojena tabulka uniformních proměnných \hyperlink{structUniforms}{Uniforms}. To jsou konstanty (obsahují obvykle matice, pozici světla apod.) Jelikož v tomto projektu jsou shadery reprezentovány pomocí funkcí (a ne pomocí G\+L\+SL kódu) je nutné ještě sdělit, jaké vertex atributy by se měli interpolovat do fragment atributů. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__program__tasks_gafe72b55028369d1e9e9f8d087c76af09}\label{group__program__tasks_gafe72b55028369d1e9e9f8d087c76af09}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!attach\+Shaders@{attach\+Shaders}}
+\index{attach\+Shaders@{attach\+Shaders}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{attach\+Shaders()}{attachShaders()}}
+{\footnotesize\ttfamily void G\+P\+U\+::attach\+Shaders (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg,  }\item[{\hyperlink{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}{Vertex\+Shader}}]{vs,  }\item[{\hyperlink{fwd_8hpp_a52f1704ae0b129e49fe1902e05319ad6}{Fragment\+Shader}}]{fs }\end{DoxyParamCaption})}
+
+
+
+This function attaches vertex and frament shader to shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program \\
+\hline
+{\em vs} & vertex shader \\
+\hline
+{\em fs} & fragment shader \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000019}{Todo}]Tato funkce by měla připojít k vybranému shader programu vertex a fragment shader. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_gae1368a616ba5be607b9cf4dd1e60dfe0}\label{group__program__tasks_gae1368a616ba5be607b9cf4dd1e60dfe0}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!create\+Program@{create\+Program}}
+\index{create\+Program@{create\+Program}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{create\+Program()}{createProgram()}}
+{\footnotesize\ttfamily \hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} G\+P\+U\+::create\+Program (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function creates new shader program. 
+
+\begin{DoxyReturn}{Returns}
+shader program id 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000017}{Todo}]Tato funkce by měla vytvořit nový shader program.~\newline
+ Funkce vrací unikátní identifikátor nového proramu.~\newline
+ Program je seznam nastavení, které obsahuje\+: ukazatel na vertex a fragment shader.~\newline
+ Dále obsahuje uniformní proměnné a typ výstupních vertex attributů z vertex shaderu, které jsou použity pro interpolaci do fragment atributů.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_ga3f8363f9c27c3f900f258e6acee52683}\label{group__program__tasks_ga3f8363f9c27c3f900f258e6acee52683}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!delete\+Program@{delete\+Program}}
+\index{delete\+Program@{delete\+Program}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{delete\+Program()}{deleteProgram()}}
+{\footnotesize\ttfamily void G\+P\+U\+::delete\+Program (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg }\end{DoxyParamCaption})}
+
+
+
+This function deletes shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000018}{Todo}]Tato funkce by měla smazat vybraný shader program.~\newline
+ Funkce smaže nastavení shader programu.~\newline
+ Identifikátor programu se stane volným a může být znovu využit.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_ga481c0eb5be3150af401a58fa167506e0}\label{group__program__tasks_ga481c0eb5be3150af401a58fa167506e0}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!is\+Program@{is\+Program}}
+\index{is\+Program@{is\+Program}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{is\+Program()}{isProgram()}}
+{\footnotesize\ttfamily bool G\+P\+U\+::is\+Program (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg }\end{DoxyParamCaption})}
+
+
+
+This function tests if selected shader program exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if shader program \char`\"{}prg\char`\"{} exists. 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000022}{Todo}]tato funkce by měla zjistit, zda daný program existuje.~\newline
+ Funkce vráti true, pokud program existuje.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_gaa9e9717db5520e6c34a1b380d6321758}\label{group__program__tasks_gaa9e9717db5520e6c34a1b380d6321758}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!program\+Uniform1f@{program\+Uniform1f}}
+\index{program\+Uniform1f@{program\+Uniform1f}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{program\+Uniform1f()}{programUniform1f()}}
+{\footnotesize\ttfamily void G\+P\+U\+::program\+Uniform1f (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg,  }\item[{uint32\+\_\+t}]{uniform\+Id,  }\item[{float const \&}]{d }\end{DoxyParamCaption})}
+
+
+
+This function sets uniform value (1 float). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program \\
+\hline
+{\em uniform\+Id} & id of uniform value (number of uniform values is stored in max\+Uniforms variable) \\
+\hline
+{\em d} & value of uniform variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000023}{Todo}]tato funkce by měla nastavit uniformní proměnnou shader programu.~\newline
+ Parametr \char`\"{}prg\char`\"{} vybírá shader program.~\newline
+ Parametr \char`\"{}uniform\+Id\char`\"{} vybírá uniformní proměnnou. Maximální počet uniformních proměnných je uložen v programné \hyperlink{fwd_8hpp_abb316cce98ea6938a7112c5f932d673f}{max\+Uniforms}.~\newline
+ Parametr \char`\"{}d\char`\"{} obsahuje data (1 float).~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_gac34e13783980686c497adda156923b1d}\label{group__program__tasks_gac34e13783980686c497adda156923b1d}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!program\+Uniform2f@{program\+Uniform2f}}
+\index{program\+Uniform2f@{program\+Uniform2f}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{program\+Uniform2f()}{programUniform2f()}}
+{\footnotesize\ttfamily void G\+P\+U\+::program\+Uniform2f (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg,  }\item[{uint32\+\_\+t}]{uniform\+Id,  }\item[{glm\+::vec2 const \&}]{d }\end{DoxyParamCaption})}
+
+
+
+This function sets uniform value (2 float). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program \\
+\hline
+{\em uniform\+Id} & id of uniform value (number of uniform values is stored in max\+Uniforms variable) \\
+\hline
+{\em d} & value of uniform variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000024}{Todo}]tato funkce dělá obdobnou věc jako funkce program\+Uniform1f.~\newline
+ Místo 1 floatu nahrává 2 floaty. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_ga06b1aca1375a9cfff13d3b66defe485f}\label{group__program__tasks_ga06b1aca1375a9cfff13d3b66defe485f}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!program\+Uniform3f@{program\+Uniform3f}}
+\index{program\+Uniform3f@{program\+Uniform3f}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{program\+Uniform3f()}{programUniform3f()}}
+{\footnotesize\ttfamily void G\+P\+U\+::program\+Uniform3f (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg,  }\item[{uint32\+\_\+t}]{uniform\+Id,  }\item[{glm\+::vec3 const \&}]{d }\end{DoxyParamCaption})}
+
+
+
+This function sets uniform value (3 float). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program \\
+\hline
+{\em uniform\+Id} & id of uniform value (number of uniform values is stored in max\+Uniforms variable) \\
+\hline
+{\em d} & value of uniform variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000025}{Todo}]tato funkce dělá obdobnou věc jako funkce program\+Uniform1f.~\newline
+ Místo 1 floatu nahrává 3 floaty. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_gad703e87e1652a78261739c6b5108c852}\label{group__program__tasks_gad703e87e1652a78261739c6b5108c852}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!program\+Uniform4f@{program\+Uniform4f}}
+\index{program\+Uniform4f@{program\+Uniform4f}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{program\+Uniform4f()}{programUniform4f()}}
+{\footnotesize\ttfamily void G\+P\+U\+::program\+Uniform4f (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg,  }\item[{uint32\+\_\+t}]{uniform\+Id,  }\item[{glm\+::vec4 const \&}]{d }\end{DoxyParamCaption})}
+
+
+
+This function sets uniform value (4 float). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program \\
+\hline
+{\em uniform\+Id} & id of uniform value (number of uniform values is stored in max\+Uniforms variable) \\
+\hline
+{\em d} & value of uniform variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000026}{Todo}]tato funkce dělá obdobnou věc jako funkce program\+Uniform1f.~\newline
+ Místo 1 floatu nahrává 4 floaty. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_gac3b490a674226c0510ac3c0b784010fa}\label{group__program__tasks_gac3b490a674226c0510ac3c0b784010fa}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!program\+Uniform\+Matrix4f@{program\+Uniform\+Matrix4f}}
+\index{program\+Uniform\+Matrix4f@{program\+Uniform\+Matrix4f}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{program\+Uniform\+Matrix4f()}{programUniformMatrix4f()}}
+{\footnotesize\ttfamily void G\+P\+U\+::program\+Uniform\+Matrix4f (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg,  }\item[{uint32\+\_\+t}]{uniform\+Id,  }\item[{glm\+::mat4 const \&}]{d }\end{DoxyParamCaption})}
+
+
+
+This function sets uniform value (4 float). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program \\
+\hline
+{\em uniform\+Id} & id of uniform value (number of uniform values is stored in max\+Uniforms variable) \\
+\hline
+{\em d} & value of uniform variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000027}{Todo}]tato funkce dělá obdobnou věc jako funkce program\+Uniform1f.~\newline
+ Místo 1 floatu nahrává matici 4x4 (16 floatů). \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_gaff499d4f692ea0dd7125bfd324957619}\label{group__program__tasks_gaff499d4f692ea0dd7125bfd324957619}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!set\+V\+S2\+F\+S\+Type@{set\+V\+S2\+F\+S\+Type}}
+\index{set\+V\+S2\+F\+S\+Type@{set\+V\+S2\+F\+S\+Type}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{set\+V\+S2\+F\+S\+Type()}{setVS2FSType()}}
+{\footnotesize\ttfamily void G\+P\+U\+::set\+V\+S2\+F\+S\+Type (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg,  }\item[{uint32\+\_\+t}]{attrib,  }\item[{\hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type}}]{type }\end{DoxyParamCaption})}
+
+
+
+This function selects which vertex attributes should be interpolated during rasterization into fragment attributes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program \\
+\hline
+{\em attrib} & id of attribute \\
+\hline
+{\em type} & type of attribute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000020}{Todo}]tato funkce by měla zvolit typ vertex atributu, který je posílán z vertex shaderu do fragment shaderu.~\newline
+ V průběhu rasterizace vznikají fragment.~\newline
+ Fragment obsahují fragment atributy.~\newline
+ Tyto atributy obsahují interpolované hodnoty vertex atributů.~\newline
+ Tato funkce vybere jakého typu jsou tyto interpolované atributy.~\newline
+ Bez jakéhokoliv nastavení jsou atributy prázdne \hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aba2b45bdc11e2a4a6e86aab2ac693cbb}{Attribute\+Type\+::\+E\+M\+P\+TY}~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__program__tasks_ga4f2bd468b0ef5fed61ffa34314319a20}\label{group__program__tasks_ga4f2bd468b0ef5fed61ffa34314319a20}} 
+\index{03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}!use\+Program@{use\+Program}}
+\index{use\+Program@{use\+Program}!03. Implementace obslužných funkcí pro shader programy@{03. Implementace obslužných funkcí pro shader programy}}
+\subsubsection{\texorpdfstring{use\+Program()}{useProgram()}}
+{\footnotesize\ttfamily void G\+P\+U\+::use\+Program (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID}}]{prg }\end{DoxyParamCaption})}
+
+
+
+This function actives selected shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prg} & shader program id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000021}{Todo}]tato funkce by měla vybrat aktivní shader program. \end{DoxyRefDesc}

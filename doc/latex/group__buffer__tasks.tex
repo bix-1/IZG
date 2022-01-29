@@ -1,0 +1,140 @@
+\hypertarget{group__buffer__tasks}{}\section{01. Implementace obslužných funkcí pro buffery}
+\label{group__buffer__tasks}\index{01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} \hyperlink{group__buffer__tasks_ga309724692e0d90a686642379f12d8d44}{G\+P\+U\+::create\+Buffer} (uint64\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em This function allocates buffer on \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+void \hyperlink{group__buffer__tasks_ga05fb19b7c8b51a92162517aa7f25a166}{G\+P\+U\+::delete\+Buffer} (\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer)
+\begin{DoxyCompactList}\small\item\em This function frees allocated buffer on \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+void \hyperlink{group__buffer__tasks_ga97e1e76065fd913d6624b4c03164dcec}{G\+P\+U\+::set\+Buffer\+Data} (\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer, uint64\+\_\+t offset, uint64\+\_\+t size, void const $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function uploads data to selected buffer on the \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+void \hyperlink{group__buffer__tasks_ga7b89dbe4afbfec3725c64000b37445af}{G\+P\+U\+::get\+Buffer\+Data} (\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer, uint64\+\_\+t offset, uint64\+\_\+t size, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em This function downloads data from \hyperlink{classGPU}{G\+PU}. \end{DoxyCompactList}\item 
+bool \hyperlink{group__buffer__tasks_gae725a1955d617a7e655ab751c6e05e97}{G\+P\+U\+::is\+Buffer} (\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} buffer)
+\begin{DoxyCompactList}\small\item\em This function tests if buffer exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Buffer je lineárlní paměť na grafické kartě. Uživatel si může na grafické kartě vytvořit libovolné množství bufferů o libovolné velikosti. Buffer slouží pro uložení dat vrcholů a indexů. Jednotlivé buffery jsou identifikovány pomocí celočíselného identifikátoru\+: \hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID}. Buffer je možné vytvořit, smazat, nahrát do něj data, vyčíst z něj data a zjistit, zda daný identifiktár odkazuje na existující buffer. Identifikátor bufferu musí být unikátní. \hyperlink{fwd_8hpp_a85f029d54035997f9d5f499008d5f623}{empty\+ID} je prázdný identifikátor, který nesmí být použit pro existující buffer. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__buffer__tasks_ga309724692e0d90a686642379f12d8d44}\label{group__buffer__tasks_ga309724692e0d90a686642379f12d8d44}} 
+\index{01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}!create\+Buffer@{create\+Buffer}}
+\index{create\+Buffer@{create\+Buffer}!01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}}
+\subsubsection{\texorpdfstring{create\+Buffer()}{createBuffer()}}
+{\footnotesize\ttfamily \hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} G\+P\+U\+::create\+Buffer (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+This function allocates buffer on \hyperlink{classGPU}{G\+PU}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & size in bytes of new buffer on \hyperlink{classGPU}{G\+PU}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unique identificator of the buffer 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]Tato funkce by měla na grafické kartě vytvořit buffer dat.~\newline
+ Velikost bufferu je v parameteru size (v bajtech).~\newline
+ Funkce by měla vrátit unikátní identifikátor identifikátor bufferu.~\newline
+ Na grafické kartě by mělo být možné alkovat libovolné množství bufferů o libovolné velikosti.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__buffer__tasks_ga05fb19b7c8b51a92162517aa7f25a166}\label{group__buffer__tasks_ga05fb19b7c8b51a92162517aa7f25a166}} 
+\index{01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}!delete\+Buffer@{delete\+Buffer}}
+\index{delete\+Buffer@{delete\+Buffer}!01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}}
+\subsubsection{\texorpdfstring{delete\+Buffer()}{deleteBuffer()}}
+{\footnotesize\ttfamily void G\+P\+U\+::delete\+Buffer (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID}}]{buffer }\end{DoxyParamCaption})}
+
+
+
+This function frees allocated buffer on \hyperlink{classGPU}{G\+PU}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & buffer identificator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Tato funkce uvolní buffer na grafické kartě. Buffer pro smazání je vybrán identifikátorem v parameteru \char`\"{}buffer\char`\"{}. Po uvolnění bufferu je identifikátor volný a může být znovu použit při vytvoření nového bufferu. \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__buffer__tasks_ga7b89dbe4afbfec3725c64000b37445af}\label{group__buffer__tasks_ga7b89dbe4afbfec3725c64000b37445af}} 
+\index{01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}!get\+Buffer\+Data@{get\+Buffer\+Data}}
+\index{get\+Buffer\+Data@{get\+Buffer\+Data}!01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}}
+\subsubsection{\texorpdfstring{get\+Buffer\+Data()}{getBufferData()}}
+{\footnotesize\ttfamily void G\+P\+U\+::get\+Buffer\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID}}]{buffer,  }\item[{uint64\+\_\+t}]{offset,  }\item[{uint64\+\_\+t}]{size,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function downloads data from \hyperlink{classGPU}{G\+PU}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & specfies buffer \\
+\hline
+{\em offset} & specifies the offset into the buffer from which data will be returned, measured in bytes. \\
+\hline
+{\em size} & specifies data size that will be copied \\
+\hline
+{\em data} & specifies a pointer to the location where buffer data is returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000006}{Todo}]Tato funkce vykopíruje data z \char`\"{}gpu\char`\"{} na cpu. Data by měla být vykopírována z bufferu vybraného parametrem \char`\"{}buffer\char`\"{}.~\newline
+ Parametr size určuje kolik dat (v bajtech) se překopíruje.~\newline
+ Parametr offset určuje místo v bufferu (posun v bajtech) odkud se začne kopírovat.~\newline
+ Parametr data obsahuje ukazatel, kam se data nakopírují.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__buffer__tasks_gae725a1955d617a7e655ab751c6e05e97}\label{group__buffer__tasks_gae725a1955d617a7e655ab751c6e05e97}} 
+\index{01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}!is\+Buffer@{is\+Buffer}}
+\index{is\+Buffer@{is\+Buffer}!01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}}
+\subsubsection{\texorpdfstring{is\+Buffer()}{isBuffer()}}
+{\footnotesize\ttfamily bool G\+P\+U\+::is\+Buffer (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID}}]{buffer }\end{DoxyParamCaption})}
+
+
+
+This function tests if buffer exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & selected buffer id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if buffer points to existing buffer on the \hyperlink{classGPU}{G\+PU}. 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000007}{Todo}]Tato funkce by měla vrátit true pokud buffer je identifikátor existující bufferu.~\newline
+ Tato funkce by měla vrátit false, pokud buffer není identifikátor existujícího bufferu. (nebo bufferu, který byl smazán).~\newline
+ Pro empty\+Id vrací false.~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__buffer__tasks_ga97e1e76065fd913d6624b4c03164dcec}\label{group__buffer__tasks_ga97e1e76065fd913d6624b4c03164dcec}} 
+\index{01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}!set\+Buffer\+Data@{set\+Buffer\+Data}}
+\index{set\+Buffer\+Data@{set\+Buffer\+Data}!01. Implementace obslužných funkcí pro buffery@{01. Implementace obslužných funkcí pro buffery}}
+\subsubsection{\texorpdfstring{set\+Buffer\+Data()}{setBufferData()}}
+{\footnotesize\ttfamily void G\+P\+U\+::set\+Buffer\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID}}]{buffer,  }\item[{uint64\+\_\+t}]{offset,  }\item[{uint64\+\_\+t}]{size,  }\item[{void const $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+This function uploads data to selected buffer on the \hyperlink{classGPU}{G\+PU}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & buffer identificator \\
+\hline
+{\em offset} & specifies the offset into the buffer\textquotesingle{}s data \\
+\hline
+{\em size} & specifies the size of buffer that will be uploaded \\
+\hline
+{\em data} & specifies a pointer to new data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]Tato funkce nakopíruje data z cpu na \char`\"{}gpu\char`\"{}.~\newline
+ Data by měla být nakopírována do bufferu vybraného parametrem \char`\"{}buffer\char`\"{}.~\newline
+ Parametr size určuje, kolik dat (v bajtech) se překopíruje.~\newline
+ Parametr offset určuje místo v bufferu (posun v bajtech) kam se data nakopírují.~\newline
+ Parametr data obsahuje ukazatel na data na cpu pro kopírování.~\newline
+ \end{DoxyRefDesc}

@@ -1,0 +1,55 @@
+\hypertarget{group__draw__tasks}{}\section{05. Implementace vykreslovacích funkcí}
+\label{group__draw__tasks}\index{05. Implementace vykreslovacích funkcí@{05. Implementace vykreslovacích funkcí}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__draw__tasks_ga012ff10197fb3e5051b854a0028db31d}{G\+P\+U\+::clear} (float r, float g, float b, float a)
+\begin{DoxyCompactList}\small\item\em This functino clears framebuffer. \end{DoxyCompactList}\item 
+void \hyperlink{group__draw__tasks_ga127436afbcbda852746dfb9dae885ecf}{G\+P\+U\+::draw\+Triangles} (uint32\+\_\+t nof\+Vertices)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bližší informace jsou uvedeny na hlavní stránce dokumentace. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__draw__tasks_ga012ff10197fb3e5051b854a0028db31d}\label{group__draw__tasks_ga012ff10197fb3e5051b854a0028db31d}} 
+\index{05. Implementace vykreslovacích funkcí@{05. Implementace vykreslovacích funkcí}!clear@{clear}}
+\index{clear@{clear}!05. Implementace vykreslovacích funkcí@{05. Implementace vykreslovacích funkcí}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void G\+P\+U\+::clear (\begin{DoxyParamCaption}\item[{float}]{r,  }\item[{float}]{g,  }\item[{float}]{b,  }\item[{float}]{a }\end{DoxyParamCaption})}
+
+
+
+This functino clears framebuffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & red channel \\
+\hline
+{\em g} & green channel \\
+\hline
+{\em b} & blue channel \\
+\hline
+{\em a} & alpha channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000035}{Todo}]Tato funkce by měla vyčistit framebuffer.~\newline
+ Barevný buffer vyčistí na barvu podle parametrů r g b a (0 -\/ nulová intenzita, 1 a větší -\/ maximální intenzita).~\newline
+ (0,0,0) -\/ černá barva, (1,1,1) -\/ bílá barva.~\newline
+ Hloubkový buffer nastaví na takovou hodnotu, která umožní rasterizaci trojúhelníka, který leží v rámci pohledového tělesa.~\newline
+ Hloubka by měla být tedy větší než maximální hloubka v N\+DC (normalized device coordinates).~\newline
+ \end{DoxyRefDesc}
+\mbox{\Hypertarget{group__draw__tasks_ga127436afbcbda852746dfb9dae885ecf}\label{group__draw__tasks_ga127436afbcbda852746dfb9dae885ecf}} 
+\index{05. Implementace vykreslovacích funkcí@{05. Implementace vykreslovacích funkcí}!draw\+Triangles@{draw\+Triangles}}
+\index{draw\+Triangles@{draw\+Triangles}!05. Implementace vykreslovacích funkcí@{05. Implementace vykreslovacích funkcí}}
+\subsubsection{\texorpdfstring{draw\+Triangles()}{drawTriangles()}}
+{\footnotesize\ttfamily void G\+P\+U\+::draw\+Triangles (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{nof\+Vertices }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000036}{Todo}]Tato funkce vykreslí trojúhelníky podle daného nastavení.~\newline
+ Vrcholy se budou vybírat podle nastavení z aktivního vertex pulleru (pomocí bind\+Vertex\+Puller).~\newline
+ Vertex shader a fragment shader se zvolí podle aktivního shader programu (pomocí use\+Program).~\newline
+ Parametr \char`\"{}nof\+Vertices\char`\"{} obsahuje počet vrcholů, který by se měl vykreslit (3 pro jeden trojúhelník).~\newline
+ \end{DoxyRefDesc}

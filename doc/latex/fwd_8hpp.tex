@@ -1,0 +1,182 @@
+\hypertarget{fwd_8hpp}{}\section{student/fwd.hpp File Reference}
+\label{fwd_8hpp}\index{student/fwd.\+hpp@{student/fwd.\+hpp}}
+
+
+This file contains forward declarations and constants.  
+
+
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{unionAttribute}{Attribute}
+\begin{DoxyCompactList}\small\item\em This union represents one vertex/fragment attribute. \end{DoxyCompactList}\item 
+struct \hyperlink{structInVertex}{In\+Vertex}
+\begin{DoxyCompactList}\small\item\em This struct represents input vertex of vertex shader. \end{DoxyCompactList}\item 
+struct \hyperlink{structOutVertex}{Out\+Vertex}
+\begin{DoxyCompactList}\small\item\em This struct represents output vertex of vertex shader. \end{DoxyCompactList}\item 
+struct \hyperlink{structInFragment}{In\+Fragment}
+\begin{DoxyCompactList}\small\item\em This struct represents input fragment. \end{DoxyCompactList}\item 
+struct \hyperlink{structOutFragment}{Out\+Fragment}
+\begin{DoxyCompactList}\small\item\em This struct represents output fragment. \end{DoxyCompactList}\item 
+union \hyperlink{unionUniform}{Uniform}
+\begin{DoxyCompactList}\small\item\em This union represents one uniform variable. \end{DoxyCompactList}\item 
+struct \hyperlink{structUniforms}{Uniforms}
+\begin{DoxyCompactList}\small\item\em This struct represents shader program uniform variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}{Vertex\+Shader} = void($\ast$)(\hyperlink{structOutVertex}{Out\+Vertex} \&out\+Vertex, \hyperlink{structInVertex}{In\+Vertex} const  \&in\+Vertex, \hyperlink{structUniforms}{Uniforms} const  \&uniforms)
+\begin{DoxyCompactList}\small\item\em Function type for vertex shader. \end{DoxyCompactList}\item 
+using \hyperlink{fwd_8hpp_a52f1704ae0b129e49fe1902e05319ad6}{Fragment\+Shader} = void($\ast$)(\hyperlink{structOutFragment}{Out\+Fragment} \&out\+Fragment, \hyperlink{structInFragment}{In\+Fragment} const  \&in\+Fragment, \hyperlink{structUniforms}{Uniforms} const  \&uniforms)
+\begin{DoxyCompactList}\small\item\em Function type for fragment shader. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}\label{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}} 
+using \hyperlink{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}{Object\+ID} = uint64\+\_\+t
+\begin{DoxyCompactList}\small\item\em object id (program, buffer, vertex puller) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}\label{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}} 
+using \hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} = \hyperlink{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}{Object\+ID}
+\begin{DoxyCompactList}\small\item\em buffer id \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fwd_8hpp_af6f78f73099477c9ce5537d657597486}\label{fwd_8hpp_af6f78f73099477c9ce5537d657597486}} 
+using \hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} = \hyperlink{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}{Object\+ID}
+\begin{DoxyCompactList}\small\item\em vertex puller id \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}\label{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}} 
+using \hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} = \hyperlink{fwd_8hpp_af56aa505d50bcd62e9e9c5a72564af4d}{Object\+ID}
+\begin{DoxyCompactList}\small\item\em shader program id \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type} \{ \newline
+\hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aba2b45bdc11e2a4a6e86aab2ac693cbb}{Attribute\+Type\+::\+E\+M\+P\+TY} = 0, 
+\hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2ae738c26bf4ce1037fa81b039a915cbf6}{Attribute\+Type\+::\+F\+L\+O\+AT} = 1, 
+\hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2a9bd71a29dd44a2e0252b56ce5c6d251a}{Attribute\+Type\+::\+V\+E\+C2} = 2, 
+\hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aa7c116def9f212182aa52ab1e936d77d}{Attribute\+Type\+::\+V\+E\+C3} = 3, 
+\newline
+\hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aee190f7a0572504036effa0134dc5d88}{Attribute\+Type\+::\+V\+E\+C4} = 4
+ \}\begin{DoxyCompactList}\small\item\em This enum represents vertex/fragment attribute type. \end{DoxyCompactList}
+\item 
+enum \hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839}{Index\+Type} \{ \hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839aecfc091ed2a607335524c8389cfa41b5}{Index\+Type\+::\+U\+I\+N\+T8} = 1, 
+\hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839a48d8f1a723d44ff4a87db1bb6c551c62}{Index\+Type\+::\+U\+I\+N\+T16} = 2, 
+\hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839a17266551181f69a1b4a3ad5c9e270afc}{Index\+Type\+::\+U\+I\+N\+T32} = 4
+ \}\begin{DoxyCompactList}\small\item\em This enum represents index type. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fwd_8hpp_a176b31bcc8f8b93ee7ef0810ea77730b}\label{fwd_8hpp_a176b31bcc8f8b93ee7ef0810ea77730b}} 
+uint32\+\_\+t const \hyperlink{fwd_8hpp_a176b31bcc8f8b93ee7ef0810ea77730b}{max\+Attributes} = 16
+\begin{DoxyCompactList}\small\item\em maximum number of vertex/fragment attributes \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fwd_8hpp_abb316cce98ea6938a7112c5f932d673f}\label{fwd_8hpp_abb316cce98ea6938a7112c5f932d673f}} 
+uint32\+\_\+t const \hyperlink{fwd_8hpp_abb316cce98ea6938a7112c5f932d673f}{max\+Uniforms} = 16
+\begin{DoxyCompactList}\small\item\em maximum number of uniform variables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fwd_8hpp_a85f029d54035997f9d5f499008d5f623}\label{fwd_8hpp_a85f029d54035997f9d5f499008d5f623}} 
+uint32\+\_\+t const \hyperlink{fwd_8hpp_a85f029d54035997f9d5f499008d5f623}{empty\+ID} = 0xffffffff
+\begin{DoxyCompactList}\small\item\em empty object id (for buffers, programs and vertex pullers) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains forward declarations and constants. 
+
+\begin{DoxyAuthor}{Author}
+Tomáš Milet, \href{mailto:imilet@fit.vutbr.cz}{\tt imilet@fit.\+vutbr.\+cz} 
+\end{DoxyAuthor}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{fwd_8hpp_a52f1704ae0b129e49fe1902e05319ad6}\label{fwd_8hpp_a52f1704ae0b129e49fe1902e05319ad6}} 
+\index{fwd.\+hpp@{fwd.\+hpp}!Fragment\+Shader@{Fragment\+Shader}}
+\index{Fragment\+Shader@{Fragment\+Shader}!fwd.\+hpp@{fwd.\+hpp}}
+\subsubsection{\texorpdfstring{Fragment\+Shader}{FragmentShader}}
+{\footnotesize\ttfamily using \hyperlink{fwd_8hpp_a52f1704ae0b129e49fe1902e05319ad6}{Fragment\+Shader} =  void($\ast$)( \hyperlink{structOutFragment}{Out\+Fragment} \&out\+Fragment, \hyperlink{structInFragment}{In\+Fragment} const\&in\+Fragment , \hyperlink{structUniforms}{Uniforms} const\&uniforms )}
+
+
+
+Function type for fragment shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Fragment} & output fragment \\
+\hline
+{\em in\+Fragment} & input fragment \\
+\hline
+{\em uniforms} & uniform variables \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}\label{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}} 
+\index{fwd.\+hpp@{fwd.\+hpp}!Vertex\+Shader@{Vertex\+Shader}}
+\index{Vertex\+Shader@{Vertex\+Shader}!fwd.\+hpp@{fwd.\+hpp}}
+\subsubsection{\texorpdfstring{Vertex\+Shader}{VertexShader}}
+{\footnotesize\ttfamily using \hyperlink{fwd_8hpp_af647cdb302d7e978c6a0da41a0a92725}{Vertex\+Shader} =  void($\ast$)( \hyperlink{structOutVertex}{Out\+Vertex} \&out\+Vertex, \hyperlink{structInVertex}{In\+Vertex} const\&in\+Vertex , \hyperlink{structUniforms}{Uniforms} const\&uniforms )}
+
+
+
+Function type for vertex shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Vertex} & output vertex \\
+\hline
+{\em in\+Vertex} & input vertex \\
+\hline
+{\em uniforms} & uniform variables \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}\label{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}} 
+\index{fwd.\+hpp@{fwd.\+hpp}!Attribute\+Type@{Attribute\+Type}}
+\index{Attribute\+Type@{Attribute\+Type}!fwd.\+hpp@{fwd.\+hpp}}
+\subsubsection{\texorpdfstring{Attribute\+Type}{AttributeType}}
+{\footnotesize\ttfamily enum \hyperlink{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2}{Attribute\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+This enum represents vertex/fragment attribute type. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+M\+P\+TY@{E\+M\+P\+TY}!fwd.\+hpp@{fwd.\+hpp}}\index{fwd.\+hpp@{fwd.\+hpp}!E\+M\+P\+TY@{E\+M\+P\+TY}}}\mbox{\Hypertarget{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aba2b45bdc11e2a4a6e86aab2ac693cbb}\label{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aba2b45bdc11e2a4a6e86aab2ac693cbb}} 
+E\+M\+P\+TY&disabled attribute \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+O\+AT@{F\+L\+O\+AT}!fwd.\+hpp@{fwd.\+hpp}}\index{fwd.\+hpp@{fwd.\+hpp}!F\+L\+O\+AT@{F\+L\+O\+AT}}}\mbox{\Hypertarget{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2ae738c26bf4ce1037fa81b039a915cbf6}\label{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2ae738c26bf4ce1037fa81b039a915cbf6}} 
+F\+L\+O\+AT&1x 32-\/bit float \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+E\+C2@{V\+E\+C2}!fwd.\+hpp@{fwd.\+hpp}}\index{fwd.\+hpp@{fwd.\+hpp}!V\+E\+C2@{V\+E\+C2}}}\mbox{\Hypertarget{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2a9bd71a29dd44a2e0252b56ce5c6d251a}\label{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2a9bd71a29dd44a2e0252b56ce5c6d251a}} 
+V\+E\+C2&2x 32-\/bit floats \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+E\+C3@{V\+E\+C3}!fwd.\+hpp@{fwd.\+hpp}}\index{fwd.\+hpp@{fwd.\+hpp}!V\+E\+C3@{V\+E\+C3}}}\mbox{\Hypertarget{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aa7c116def9f212182aa52ab1e936d77d}\label{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aa7c116def9f212182aa52ab1e936d77d}} 
+V\+E\+C3&3x 32-\/bit floats \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+E\+C4@{V\+E\+C4}!fwd.\+hpp@{fwd.\+hpp}}\index{fwd.\+hpp@{fwd.\+hpp}!V\+E\+C4@{V\+E\+C4}}}\mbox{\Hypertarget{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aee190f7a0572504036effa0134dc5d88}\label{fwd_8hpp_a349a9cde14be8097df865ba0469c0ab2aee190f7a0572504036effa0134dc5d88}} 
+V\+E\+C4&4x 32-\/bit floats \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839}\label{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839}} 
+\index{fwd.\+hpp@{fwd.\+hpp}!Index\+Type@{Index\+Type}}
+\index{Index\+Type@{Index\+Type}!fwd.\+hpp@{fwd.\+hpp}}
+\subsubsection{\texorpdfstring{Index\+Type}{IndexType}}
+{\footnotesize\ttfamily enum \hyperlink{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839}{Index\+Type}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+This enum represents index type. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+I\+N\+T8@{U\+I\+N\+T8}!fwd.\+hpp@{fwd.\+hpp}}\index{fwd.\+hpp@{fwd.\+hpp}!U\+I\+N\+T8@{U\+I\+N\+T8}}}\mbox{\Hypertarget{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839aecfc091ed2a607335524c8389cfa41b5}\label{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839aecfc091ed2a607335524c8389cfa41b5}} 
+U\+I\+N\+T8&uin8\+\_\+t type \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+I\+N\+T16@{U\+I\+N\+T16}!fwd.\+hpp@{fwd.\+hpp}}\index{fwd.\+hpp@{fwd.\+hpp}!U\+I\+N\+T16@{U\+I\+N\+T16}}}\mbox{\Hypertarget{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839a48d8f1a723d44ff4a87db1bb6c551c62}\label{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839a48d8f1a723d44ff4a87db1bb6c551c62}} 
+U\+I\+N\+T16&uin16\+\_\+t type \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+I\+N\+T32@{U\+I\+N\+T32}!fwd.\+hpp@{fwd.\+hpp}}\index{fwd.\+hpp@{fwd.\+hpp}!U\+I\+N\+T32@{U\+I\+N\+T32}}}\mbox{\Hypertarget{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839a17266551181f69a1b4a3ad5c9e270afc}\label{fwd_8hpp_a2bfb0a0ff1c379a8b4e8f9d24fdd4839a17266551181f69a1b4a3ad5c9e270afc}} 
+U\+I\+N\+T32&uint32\+\_\+t type \\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,104 @@
+\hypertarget{classCZFlagMethod}{}\section{C\+Z\+Flag\+Method Class Reference}
+\label{classCZFlagMethod}\index{C\+Z\+Flag\+Method@{C\+Z\+Flag\+Method}}
+
+
+Czech flag rendering method.  
+
+
+
+
+{\ttfamily \#include $<$cz\+Flag\+Method.\+hpp$>$}
+
+Inheritance diagram for C\+Z\+Flag\+Method\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCZFlagMethod}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classCZFlagMethod_a72425a172b48b3f730b9b8c7745cc70a}{on\+Draw} (glm\+::mat4 const \&proj, glm\+::mat4 const \&view, glm\+::vec3 const \&light, glm\+::vec3 const \&camera) override
+\begin{DoxyCompactList}\small\item\em This functino is called every frame. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classCZFlagMethod_a337cf1158aca2ecf975fee2631071411}{on\+Update} (float dt) override
+\begin{DoxyCompactList}\small\item\em This function is called on update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCZFlagMethod_a12d43d5482de95694d146b9a2df98fdf}\label{classCZFlagMethod_a12d43d5482de95694d146b9a2df98fdf}} 
+\hyperlink{fwd_8hpp_a46ffd067c21ab50f5f1fcfed5d8bfc15}{Program\+ID} \hyperlink{classCZFlagMethod_a12d43d5482de95694d146b9a2df98fdf}{prg}
+\begin{DoxyCompactList}\small\item\em id of program \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCZFlagMethod_ae12697c090cc02a88e6889294f584f6c}\label{classCZFlagMethod_ae12697c090cc02a88e6889294f584f6c}} 
+\hyperlink{fwd_8hpp_af6f78f73099477c9ce5537d657597486}{Vertex\+Puller\+ID} \hyperlink{classCZFlagMethod_ae12697c090cc02a88e6889294f584f6c}{vao}
+\begin{DoxyCompactList}\small\item\em id of vertex puller \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCZFlagMethod_afb718b24827f950ea22155f6e0494f8d}\label{classCZFlagMethod_afb718b24827f950ea22155f6e0494f8d}} 
+\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} \hyperlink{classCZFlagMethod_afb718b24827f950ea22155f6e0494f8d}{vbo}
+\begin{DoxyCompactList}\small\item\em vertex buffer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCZFlagMethod_a440e125079baaa5643564c4e0b0d335e}\label{classCZFlagMethod_a440e125079baaa5643564c4e0b0d335e}} 
+\hyperlink{fwd_8hpp_a5114031b77b80ad895eff688720b7f93}{Buffer\+ID} \hyperlink{classCZFlagMethod_a440e125079baaa5643564c4e0b0d335e}{ebo}
+\begin{DoxyCompactList}\small\item\em index buffer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCZFlagMethod_a7cd60dc6b4da7b084ad7385476c6334b}\label{classCZFlagMethod_a7cd60dc6b4da7b084ad7385476c6334b}} 
+float \hyperlink{classCZFlagMethod_a7cd60dc6b4da7b084ad7385476c6334b}{time} = 0.f
+\begin{DoxyCompactList}\small\item\em elapsed time \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCZFlagMethod_ad9bf715285c16dac0f9c6018431abf61}\label{classCZFlagMethod_ad9bf715285c16dac0f9c6018431abf61}} 
+uint32\+\_\+t const \hyperlink{classCZFlagMethod_ad9bf715285c16dac0f9c6018431abf61}{NX} = 100
+\begin{DoxyCompactList}\small\item\em nof vertices in x direction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCZFlagMethod_aa0e93166f0ed7d7ecc6e22f105a43020}\label{classCZFlagMethod_aa0e93166f0ed7d7ecc6e22f105a43020}} 
+uint32\+\_\+t const \hyperlink{classCZFlagMethod_aa0e93166f0ed7d7ecc6e22f105a43020}{NY} = 10
+\begin{DoxyCompactList}\small\item\em nof vertices in y direction \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Czech flag rendering method. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCZFlagMethod_a72425a172b48b3f730b9b8c7745cc70a}\label{classCZFlagMethod_a72425a172b48b3f730b9b8c7745cc70a}} 
+\index{C\+Z\+Flag\+Method@{C\+Z\+Flag\+Method}!on\+Draw@{on\+Draw}}
+\index{on\+Draw@{on\+Draw}!C\+Z\+Flag\+Method@{C\+Z\+Flag\+Method}}
+\subsubsection{\texorpdfstring{on\+Draw()}{onDraw()}}
+{\footnotesize\ttfamily void C\+Z\+Flag\+Method\+::on\+Draw (\begin{DoxyParamCaption}\item[{glm\+::mat4 const \&}]{proj,  }\item[{glm\+::mat4 const \&}]{view,  }\item[{glm\+::vec3 const \&}]{light,  }\item[{glm\+::vec3 const \&}]{camera }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+This functino is called every frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em proj} & projection matrix \\
+\hline
+{\em view} & view matrix \\
+\hline
+{\em light} & light position \\
+\hline
+{\em camera} & camera position \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classMethod_ab07a971e2a1b04a658467c643423c347}{Method}.
+
+\mbox{\Hypertarget{classCZFlagMethod_a337cf1158aca2ecf975fee2631071411}\label{classCZFlagMethod_a337cf1158aca2ecf975fee2631071411}} 
+\index{C\+Z\+Flag\+Method@{C\+Z\+Flag\+Method}!on\+Update@{on\+Update}}
+\index{on\+Update@{on\+Update}!C\+Z\+Flag\+Method@{C\+Z\+Flag\+Method}}
+\subsubsection{\texorpdfstring{on\+Update()}{onUpdate()}}
+{\footnotesize\ttfamily void C\+Z\+Flag\+Method\+::on\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+This function is called on update. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & delta time -\/ time between frames \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classMethod_a42dbfcfce68e920f7e957f737e93e698}{Method}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+student/\hyperlink{czFlagMethod_8hpp}{cz\+Flag\+Method.\+hpp}\item 
+student/\hyperlink{czFlagMethod_8cpp}{cz\+Flag\+Method.\+cpp}\end{DoxyCompactItemize}
