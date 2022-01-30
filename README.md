@@ -4,8 +4,8 @@ Project for course [Computer Graphics Principles](https://www.fit.vut.cz/study/c
 ## Description
 - Software implementation of GPU and visualization of 2D and 3D objects
 
-## Assignment
-<!-- - [Documentation](https://github.com/bix-1/ISA/blob/master/src/manual.pdf) -->
+## Assignment (in czech)
+- See `doc/html/index.html` in browser
 
 ## Authors
 - Jakub Bartko xbartk07@stud.fit.vutbr.cz
